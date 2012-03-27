@@ -7,7 +7,6 @@ gem 'rails', '3.2.2'
 
 gem 'mysql2'
 gem "capistrano", "~> 2.11.2"
-# gem "rvm-capistrano", "~> 1.0.1"
 
 
 # Gems used only for assets and not required
@@ -23,6 +22,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem "execjs", "~> 1.3.0"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
