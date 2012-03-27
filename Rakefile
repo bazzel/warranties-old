@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Guaranteed::Application.load_tasks
+Warranties::Application.load_tasks

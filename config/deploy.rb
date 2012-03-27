@@ -1,5 +1,5 @@
 # RVM bootstrap
-set :rvm_ruby_string, '1.9.2-p136@guaranteed'
+set :rvm_ruby_string, '1.9.2-p136@warranties'
 $:.unshift(File.expand_path('./lib', ENV['rvm_path'])) # Add RVM's lib directory to the load path.
 require "rvm/capistrano"                               # Load RVM's capistrano plugin.
 
@@ -13,7 +13,7 @@ set :rvm_type, :user
 require 'bundler/capistrano'
 
 # main details
-set :application, "guaranteed"
+set :application, "warranties"
 role :web, "patrick.kabisa.nl"
 role :app, "patrick.kabisa.nl"
 role :db,  "patrick.kabisa.nl", :primary => true
@@ -21,7 +21,7 @@ role :db,  "patrick.kabisa.nl", :primary => true
 # server details
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
-set :deploy_to, "/var/www/guaranteed"
+set :deploy_to, "/var/www/warranties"
 set :deploy_via, :remote_cache
 set :user, "passenger"
 set :use_sudo, false
@@ -29,7 +29,7 @@ set :use_sudo, false
 # repo details
 set :scm, :git
 set :scm_username, "passenger"
-set :repository, "git@github.com:bazzel/guaranteed.git"
+set :repository, "git@github.com:bazzel/warranties.git"
 set :branch, "master"
 set :git_enable_submodules, 1
 
