@@ -5,9 +5,13 @@ gem 'rails', '3.2.2'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
 gem "capistrano", "~> 2.11.2"
+gem 'haml', '3.1.4'
+gem 'mysql2'
 
+group :development do
+  gem 'haml-rails', '0.3.4'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -27,6 +31,7 @@ gem 'jquery-rails'
 group :test do
   gem 'cucumber-rails',       '1.3.0'
   gem 'database_cleaner',     '0.7.2'
+  gem 'rspec-rails',          '2.9.0'
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

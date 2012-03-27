@@ -1,0 +1,18 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:Warranties
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+CreateWarranties	db/migrate/20120327202437_create_warranties.rb	/^class CreateWarranties < ActiveRecord::Migration$/;"	c
+Warranties	config/application.rb	/^module Warranties$/;"	m
+WarrantiesController	app/controllers/warranties_controller.rb	/^class WarrantiesController < ApplicationController$/;"	c
+WarrantiesHelper	app/helpers/warranties_helper.rb	/^module WarrantiesHelper$/;"	m
+Warranty	app/models/warranty.rb	/^class Warranty < ActiveRecord::Base$/;"	c
+about	public/index.html	/^      function about() {$/;"	f
+change	db/migrate/20120327202437_create_warranties.rb	/^  def change$/;"	f	class:CreateWarranties
+do_get	spec/controllers/warranties_controller_spec.rb	/^    def do_get$/;"	f
+new	app/controllers/warranties_controller.rb	/^  def new$/;"	f	class:WarrantiesController

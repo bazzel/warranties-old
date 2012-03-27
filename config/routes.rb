@@ -1,4 +1,5 @@
 Warranties::Application.routes.draw do
+  resources :warranties
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
