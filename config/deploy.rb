@@ -1,15 +1,15 @@
 # RVM bootstrap
-$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
-require 'rvm/capistrano'
+set :rvm_ruby_string, '1.9.2-p136@guaranteed'
+# $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+require 'rvm-capistrano'
 
 # When using whenever gem:
 # set :whenever_command, "bundle exec whenever"
 # require 'whenever/capistrano'
 
 # To avoid ArgumentError: invalid byte sequence in US-ASCII during deployment:
-set :bundle_cmd, "LANG='en_US.UTF-8' LC_ALL='en_US.UTF-8' bundle"
+# set :bundle_cmd, "LANG='en_US.UTF-8' LC_ALL='en_US.UTF-8' bundle"
 
-set :rvm_ruby_string, '1.9.2-p136@guaranteed'
 set :rvm_type, :user
 
 # bundler bootstrap
