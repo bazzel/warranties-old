@@ -6,6 +6,8 @@ gem 'rails', '3.2.2'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
+gem "capistrano", "~> 2.11.2"
+gem "rvm-capistrano", "~> 1.0.1"
 
 
 # Gems used only for assets and not required
