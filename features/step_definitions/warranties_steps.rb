@@ -4,7 +4,7 @@ end
 
 Given /^I create a valid warranty$/ do
   within('#new_warranty') do
-    fill_in "Product", :with => "Lamp"
+    fill_in "Name", :with => "Lamp"
     click_button "Create"
   end
 end
