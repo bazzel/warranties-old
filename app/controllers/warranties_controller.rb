@@ -8,10 +8,14 @@ class WarrantiesController < ApplicationController
     @warranty = Warranty.new
   end
 
+  def show
+    @warranty = Warranty.find(params[:id])
+  end
+
   def create
     @warranty = Warranty.new(params[:warranty])
     @warranty.save
 
-    redirect_to(warranties_path)
+    redirect_to(warranty_path(@warranty), :notice => "New warranty created.")
   end
 end

@@ -27,6 +27,27 @@ describe WarrantiesController do
     end
   end
 
+  describe "GET show" do
+    before(:each) do
+      Warranty.stub(:find).with('42').and_return(@warranty)
+    end
+
+    def do_get
+      get :show, :id => '42'
+    end
+
+    it "assigns the requested warranty as @warranty" do
+      Warranty.should_receive(:find).with('42').and_return(@warranty)
+      do_get
+      assigns(:warranty).should == @warranty
+    end
+
+    it "renders 'show'" do
+      do_get
+      response.should render_template('show')
+    end
+  end
+
   describe "POST create" do
     before(:each) do
       @warranty.stub(:save).and_return(true)
@@ -49,7 +70,12 @@ describe WarrantiesController do
 
     it "redirects to warranties_path" do
       do_post
-      response.should redirect_to(warranties_path)
+      response.should redirect_to(warranty_path(@warranty))
+    end
+
+    it "flashes notification" do
+      do_post
+      flash[:notice].should == "New warranty created."
     end
   end
 

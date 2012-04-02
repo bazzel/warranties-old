@@ -6,5 +6,4 @@ Feature: Create a warranty
   Scenario: Create a valid warranty
     Given I am on a new warranty page
     And I create a valid warranty
-    Then I should be on the warranties page
-    And the warranty is created successfully
+    Then I should see the warranty's detail page

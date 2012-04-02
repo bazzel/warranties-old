@@ -5,14 +5,18 @@ end
 Given /^I create a valid warranty$/ do
   within('#new_warranty') do
     fill_in "Name", :with => "Lamp"
+    attach_file "Warranty", File.join(Rails.root, 'spec', 'fixtures', 'warranty.gif')
     click_button "Create"
   end
+
+  @warranty = Warranty.last
 end
 
-Then /^I should be on the warranties page$/ do
-  current_path.should == warranties_path
-end
-
-Then /^the warranty is created successfully$/ do
-  page.should have_content("New warranty created.")
+Then /^I should see the warranty's detail page$/ do
+  current_path.should == warranty_path(@warranty)
+  within('.alert-box') do
+    page.should have_content("New warranty created.")
+  end
+  page.should have_content(@warranty.name)
+  page.should have_selector("img[src='#{@warranty.warranty.url}']")
 end
