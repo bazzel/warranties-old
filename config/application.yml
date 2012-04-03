@@ -4,7 +4,8 @@
 defaults: &defaults
   # Amazon S3 data is stored in environment vars.
   #
-  # 1. You can set these values in the ~/.bashrc for the user:
+  # 1. You can set these values in the ~/.bashrc for the user
+  #    or /etc/apache2/envvars when running Apache (restart after editing: 'sudo /etc/init.d/apache2 restart'):
   #
   #   export S3_KEY=mykey
   #   export S3_SECRET=mysecret
