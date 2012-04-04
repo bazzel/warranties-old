@@ -1,5 +1,5 @@
 PATH
-  remote: vendor/formtastic-bootstrap
+  remote: vendor/gems/formtastic-bootstrap-4e6a7f50153a
   specs:
     formtastic-bootstrap (1.1.2)
       formtastic
