@@ -10,18 +10,9 @@ gem "capistrano",             "~> 2.11.2"
 gem "devise",                 "~> 2.0.4" # Flexible authentication solution for Rails with Warden
 gem "fog",                    "~> 1.3.1" # The Ruby cloud services library.
 gem "formtastic",             "~> 2.1.1"
-# formtastic-bootstrap is not yet Rails 3.2.x ready.
-# Therefore we used a forked version found on cgunther (see below).
-# This caused error during deployment, so I decided
-# to copy the gem into the vendor folder and use it from here.
-#
-#   cp -r ~/.rvm/gems/[rvm]@[gemset]/bundler/gems/formtastic-bootstrap-4e6a7f50153a vendor/
-#   cd vendor
-#   mv formtastic-bootstrap-4e6a7f50153a formtastic-bootstrap
 gem 'formtastic-bootstrap',
-  :path => "vendor/gems/formtastic-bootstrap-4e6a7f50153a"
-  # :git => 'https://github.com/cgunther/formtastic-bootstrap.git',  # Since formtastic-bootstrap is not (yet) Rails 3.2.x ready.
-  # :branch => 'bootstrap2-rails3-2-formtastic-2-1' # See http://blog.sam-pointer.com/2012/02/12/formtastic-bootstrap-with-rails-3-2-and-twitter-bootstrap-2
+  :git => 'https://github.com/cgunther/formtastic-bootstrap.git',  # Since formtastic-bootstrap is not (yet) Rails 3.2.x ready.
+  :branch => 'bootstrap2-rails3-2-formtastic-2-1' # See http://blog.sam-pointer.com/2012/02/12/formtastic-bootstrap-with-rails-3-2-and-twitter-bootstrap-2
 gem "haml",                   "~> 3.1.4"
 gem "jquery-rails",           "~> 2.0.1"
 gem "mysql2",                 "~> 0.3.11"

@@ -1,5 +1,7 @@
-PATH
-  remote: vendor/gems/formtastic-bootstrap-4e6a7f50153a
+GIT
+  remote: https://github.com/cgunther/formtastic-bootstrap.git
+  revision: 4e6a7f50153af805470d43a2bd2c9885a902e4a6
+  branch: bootstrap2-rails3-2-formtastic-2-1
   specs:
     formtastic-bootstrap (1.1.2)
       formtastic
