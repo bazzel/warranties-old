@@ -50,7 +50,7 @@ Warranties::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { :host => 'patrickbaselier.nl' }
+  config.action_mailer.default_url_options = { :host => 'warranties.patrickbaselier.nl' }
 
   # Turn off 'enable_starttls_auto' to avoid
   # 'OpenSSL::SSL::SSLError (hostname was not match with the server certificate)'
