@@ -11,8 +11,9 @@ gem "devise",                 "~> 2.0.4" # Flexible authentication solution for 
 gem "fog",                    "~> 1.3.1" # The Ruby cloud services library.
 gem "formtastic",             "~> 2.1.1"
 gem 'formtastic-bootstrap',
-  :git => 'https://github.com/cgunther/formtastic-bootstrap.git',  # Since formtastic-bootstrap is not (yet) Rails 3.2.x ready.
-  :branch => 'bootstrap2-rails3-2-formtastic-2-1' # See http://blog.sam-pointer.com/2012/02/12/formtastic-bootstrap-with-rails-3-2-and-twitter-bootstrap-2
+  :path => "vendor/formtastic-bootstrap"
+  # :git => 'https://github.com/cgunther/formtastic-bootstrap.git',  # Since formtastic-bootstrap is not (yet) Rails 3.2.x ready.
+  # :branch => 'bootstrap2-rails3-2-formtastic-2-1' # See http://blog.sam-pointer.com/2012/02/12/formtastic-bootstrap-with-rails-3-2-and-twitter-bootstrap-2
 gem "haml",                   "~> 3.1.4"
 gem "jquery-rails",           "~> 2.0.1"
 gem "mysql2",                 "~> 0.3.11"
