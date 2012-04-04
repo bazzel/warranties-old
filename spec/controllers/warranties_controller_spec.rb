@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe WarrantiesController do
+  login_user
+
   before(:each) do
     @warranty = double
     Warranty.stub(:new).and_return(@warranty)

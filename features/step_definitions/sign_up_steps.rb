@@ -30,12 +30,12 @@ end
 
 Then /^I see that the password I entered doesn't match confirmation$/ do
   within('form') do
-    page.should have_css('p.inline-errors', :text => "doesn't match confirmation")
+    input_error(:text => "doesn't match confirmation")
   end
 end
 
 Then /^I see that I should have entered credentials first$/ do
   within('form') do
-    page.should have_css('p.inline-errors', :text => "can't be blank", :count => 2)
+    input_error(:text => "can't be blank", :count => 2)
   end
 end

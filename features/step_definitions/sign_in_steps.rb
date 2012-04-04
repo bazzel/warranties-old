@@ -21,7 +21,7 @@ Given /^I submit the sign in form with invalid credentials$/ do
 end
 
 Then /^I see that I have entered invalid credentials$/ do
-  within('.alert-box.alert') do
+  within_flash do
     page.should have_content('Invalid email or password.')
   end
 end
@@ -49,7 +49,7 @@ end
 
 Then /^I see that I should have entered an email address first$/ do
   within('form') do
-    page.should have_css('p.inline-errors', :text => "can't be blank")
+    input_error(:text => "can't be blank")
   end
 end
 
@@ -62,6 +62,6 @@ end
 
 Then /^I see that I should have entered a valid email address first$/ do
   within('form') do
-    page.should have_css('p.inline-errors', :text => "not found")
+    input_error(:text => "not found")
   end
 end

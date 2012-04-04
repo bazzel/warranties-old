@@ -7,5 +7,7 @@
     = csrf_meta_tags
 
   %body
-    = render 'shared/flashes'
-    = yield
+    .container
+      .span6.offset3
+        = render 'shared/flashes'
+        = yield

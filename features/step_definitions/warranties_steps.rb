@@ -10,9 +10,10 @@ end
 
 Then /^I should see the warranty's detail page$/ do
   current_path.should == warranty_path(@warranty)
-  within('.alert-box') do
+  within_flash do
     page.should have_content("New warranty created.")
   end
   page.should have_content(@warranty.name)
   page.should have_selector("img[src='#{@warranty.warranty.url}']")
 end
+

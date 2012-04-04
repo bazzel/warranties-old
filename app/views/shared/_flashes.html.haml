@@ -1,2 +1,4 @@
 - flash.each do |name, msg|
-  .alert-box{ :class => name }= msg
+  .alert
+    %a.close{ 'data-dismiss' => "alert" } x
+    = msg
