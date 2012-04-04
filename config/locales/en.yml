@@ -26,4 +26,6 @@ en:
       # update: "Save changes"
       # reset: "Reset form"
       # cancel: "Cancel and go back"
+      sign_in: "Sign in"
       send_reset_password_instructions: "Send me reset password instructions"
+      change_my_password: "Change my password"

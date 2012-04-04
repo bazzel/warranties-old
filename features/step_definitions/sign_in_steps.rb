@@ -35,14 +35,14 @@ When /^I forgot my password$/ do
   click_link "Forgot your password?"
 end
 
-# Then /^I can ask for an email with instructions about how to reset my password$/ do
-#   within('#user_new') do
-#     fill_in 'user[email]', :with => 'john.doe@example.com'
-#   end
-#   click_button "Submit"
-#   step %{"john.doe@example.com" should receive an email}
-# end
-#
+Then /^I can ask for an email with instructions about how to reset my password$/ do
+  within('form') do
+    fill_in 'Email', :with => 'john.doe@example.com'
+    click_button "Send me reset password instructions"
+  end
+  step %{"john.doe@example.com" should receive an email}
+end
+
 When /^I ask for reset password instructions without providing an email address$/ do
   click_button "Send me reset password instructions"
 end

@@ -4,7 +4,7 @@ Given /^I am not signed in$/ do
 end
 
 Given /^I have an account with email "([^"]*)"$/ do |email|
-  @user = Factory(:user, :email => email)
+  @user = FactoryGirl.create(:user, :email => email)
 end
 
 Given /^I am logged in as a user with email "([^"]*)" and password "([^"]*)"$/ do |email, password|
