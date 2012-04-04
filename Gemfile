@@ -7,7 +7,9 @@ gem "rails",                  "3.2.2"
 
 gem "carrierwave",            "~> 0.6.0" # Upload files in your Ruby applications, map them to a range of ORMs, store them on different backends
 gem "capistrano",             "~> 2.11.2"
+gem "devise",                 "~> 2.0.4" # Flexible authentication solution for Rails with Warden
 gem "fog",                    "~> 1.3.1" # The Ruby cloud services library.
+gem "formtastic",             "~> 2.1.1"
 gem "haml",                   "~> 3.1.4"
 gem "jquery-rails",           "~> 2.0.1"
 gem "mysql2",                 "~> 0.3.11"
@@ -33,6 +35,7 @@ end
 group :test do
   gem "cucumber-rails",       "~> 1.3.0"
   gem "database_cleaner",     "~> 0.7.2"
+  gem "launchy",              "~> 2.1.0"
   gem "rspec-rails",          "~> 2.9.0"
 end
 # To use ActiveModel has_secure_password

@@ -1,9 +1,5 @@
-Given /^I am on a new warranty page$/ do
-  visit new_warranty_path
-end
-
 Given /^I create a valid warranty$/ do
-  within('#new_warranty') do
+  within('form') do
     fill_in "Name", :with => "Lamp"
     attach_file "Warranty", File.join(Rails.root, 'spec', 'fixtures', 'warranty.gif')
     click_button "Create"

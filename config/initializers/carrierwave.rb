@@ -15,7 +15,7 @@ CarrierWave.configure do |config|
 
     WarrantyUploader.class_eval do
       def cache_dir
-        "#{Rails.root}/tmp"
+        "#{Rails.root}/tmp/uploads"
       end
 
       def store_dir
