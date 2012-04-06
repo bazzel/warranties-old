@@ -70,7 +70,7 @@ module Warranties
     end
 
     config.to_prepare do
-      Devise::SessionsController.layout "sign"
+      DeviseController.layout "sign"
     end
 
   end

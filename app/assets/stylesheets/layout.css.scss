@@ -1,0 +1,13 @@
+// We need to import bootstrap so we can keep our markup semantic
+// and use @extend.
+@import "bootstrap";
+@import "bootstrap-responsive";
+
+body.sign {
+  padding-top: 12em;
+  @extend .container;
+  div[role='main'] {
+    @extend .span6;
+    @extend .offset3;
+  }
+}
