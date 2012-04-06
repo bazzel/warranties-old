@@ -2,30 +2,12 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  formtastic:
-    titles:
-      # post_details: "Post details"
-    labels:
-      # post:
-      #   title: "Your Title"
-      #   body: "Write something..."
-      #   edit:
-      #     title: "Edit title"
-    hints:
-      # post:
-      #   title: "Choose a good title for your post."
-      #   body: "Write something inspiring here."
-    placeholders:
-      # post:
-      #   title: "Title your post"
-      #   slug: "Leave blank for an automatically generated slug"
-      # user:
-      #   email: "you@yours.com"
-    actions:
-      # create: "Create my %{model}"
-      # update: "Save changes"
-      # reset: "Reset form"
-      # cancel: "Cancel and go back"
-      sign_in: "Sign in"
-      send_reset_password_instructions: "Send me reset password instructions"
-      change_my_password: "Change my password"
+  helpers:
+    submit:
+      user:
+        create: "Sign in"
+      password:
+        create: "Send me reset password instructions"
+      registration:
+        create: "Sign up"
+      # change_my_password: "Change my password"

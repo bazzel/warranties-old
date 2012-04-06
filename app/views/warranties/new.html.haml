@@ -1,8 +1,6 @@
-= form_for @warranty do |f|
-  %div
-    = f.label :name
-    = f.text_field :name
-  %div
-    = f.label :warranty
-    = f.file_field :warranty
-  = f.submit
+= simple_form_for(@warranty, :html => { :class => 'form-horizontal' }) do |f|
+  = f.input :name
+  = f.input :warranty
+
+  .form-actions
+    = f.submit :class => 'btn-primary'

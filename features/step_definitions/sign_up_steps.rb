@@ -1,5 +1,5 @@
 When /^I enter no data for a new account$/ do
-  click_button "Create User"
+  click_button I18n.t('helpers.submit.registration.create')
 end
 
 When /^I choose to create a new account$/ do
@@ -16,7 +16,7 @@ When /^I enter valid data for a new account$/ do
     fill_in 'Email', :with => 'john.doe@example.com'
     fill_in 'Password', :with => 'Secret.1'
     fill_in 'Password confirmation', :with => 'Secret.1'
-    click_button "Create User"
+    click_button I18n.t('helpers.submit.registration.create')
   end
 end
 
@@ -24,7 +24,7 @@ When /^I didn't confirm my password$/ do
   within('form') do
     fill_in 'Email', :with => 'john.doe@example.com'
     fill_in 'Password', :with => 'Secret.1'
-    click_button "Create User"
+    click_button I18n.t('helpers.submit.registration.create')
   end
 end
 

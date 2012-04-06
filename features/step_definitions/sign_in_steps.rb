@@ -7,7 +7,7 @@
 #
 When /^I submit an empty sign in form$/ do
   visit new_user_session_path
-  click_button I18n.t('formtastic.actions.sign_in')
+  click_button I18n.t('helpers.submit.user.create')
 end
 
 
@@ -17,7 +17,7 @@ Given /^I submit the sign in form with invalid credentials$/ do
     fill_in 'Email', :with => 'john.doe@example.com'
     fill_in 'Password', :with => 'Secret.1'
   end
-  click_button I18n.t('formtastic.actions.sign_in')
+  click_button I18n.t('helpers.submit.user.create')
 end
 
 Then /^I see that I have entered invalid credentials$/ do
@@ -38,13 +38,13 @@ end
 Then /^I can ask for an email with instructions about how to reset my password$/ do
   within('form') do
     fill_in 'Email', :with => 'john.doe@example.com'
-    click_button I18n.t('formtastic.actions.send_reset_password_instructions')
+    click_button I18n.t('helpers.submit.password.create')
   end
   step %{"john.doe@example.com" should receive an email}
 end
 
 When /^I ask for reset password instructions without providing an email address$/ do
-  click_button I18n.t('formtastic.actions.send_reset_password_instructions')
+  click_button I18n.t('helpers.submit.password.create')
 end
 
 Then /^I see that I should have entered an email address first$/ do
@@ -56,7 +56,7 @@ end
 When /^I ask for reset password instructions for an invalid email address$/ do
   within('form') do
     fill_in 'Email', :with => 'unknown@example.com'
-    click_button I18n.t('formtastic.actions.send_reset_password_instructions')
+    click_button I18n.t('helpers.submit.password.create')
   end
 end
 
