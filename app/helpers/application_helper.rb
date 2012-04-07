@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   # Transform into proper Twitter Bootstrap type
   # when displaying flash message.
   #   Usage:

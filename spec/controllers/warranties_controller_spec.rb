@@ -70,14 +70,27 @@ describe WarrantiesController do
       do_post
     end
 
-    it "redirects to warranties_path" do
-      do_post
-      response.should redirect_to(warranty_path(@warranty))
+    describe "success" do
+      it "redirects to warranties_path" do
+        do_post
+        response.should redirect_to(warranty_path(@warranty))
+      end
+
+      it "flashes notification" do
+        do_post
+        flash[:notice].should == "New warranty created."
+      end
     end
 
-    it "flashes notification" do
-      do_post
-      flash[:notice].should == "New warranty created."
+    describe "failure" do
+      before(:each) do
+        @warranty.stub(:save).and_return(false)
+      end
+
+      it "render new" do
+        do_post
+        response.should render_template(:new)
+      end
     end
   end
 

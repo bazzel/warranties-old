@@ -17,3 +17,18 @@ Then /^I should see the warranty's detail page$/ do
   page.should have_selector("img[src='#{@warranty.warranty.url}']")
 end
 
+Given /^I create an invalid warranty$/ do
+  within('form') do
+    click_button "Create"
+  end
+end
+
+When /^I cancel the creation$/ do
+  click_link "Cancel"
+end
+
+Then /^I should see that the warranty is invalid$/ do
+  within('form') do
+    page.should have_content("can't be blank")
+  end
+end
