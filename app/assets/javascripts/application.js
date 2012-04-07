@@ -16,3 +16,4 @@
 // Loads all Bootstrap javascripts
 //= require bootstrap
 //= require modernizr
+//= require bootstrap-datepicker

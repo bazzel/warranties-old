@@ -1,6 +1,7 @@
 Given /^I create a valid warranty$/ do
   within('form') do
     fill_in "Name", :with => "Lamp"
+    fill_in "Expires on", :with => 2.years.from_now
     attach_file "Warranty", File.join(Rails.root, 'spec', 'fixtures', 'warranty.gif')
     click_button "Create"
   end
