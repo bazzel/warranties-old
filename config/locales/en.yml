@@ -8,6 +8,6 @@ en:
         create: "Sign in"
       password:
         create: "Send me reset password instructions"
+        update: "Change my password"
       registration:
         create: "Sign up"
-      # change_my_password: "Change my password"
