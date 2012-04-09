@@ -15,6 +15,8 @@ Feature: Create a warranty
     Given I am on the new warranty page
     And I create a valid warranty
     Then I should see the warranty's detail page
+    When I go to the warranties page
+    Then I should see a listing of my warranties
 
   Scenario: Cancel creation
     Given I am on the new warranty page

@@ -31,7 +31,7 @@ Given /^I create a valid warranty$/ do
     click_button "Create"
   end
 
-  @warranty = Warranty.last
+  @warranty = @current_user.warranties.last
 end
 
 Then /^I should see a listing of my warranties$/ do
@@ -42,7 +42,7 @@ Then /^I should see a listing of my warranties$/ do
   end
 end
 
-Then /^I should not see a listing of my warranties that belong to "([^"]*)"$/ do |email|
+Then /^I should not see a listing of warranties that belong to "([^"]*)"$/ do |email|
   user = User.find_by_email(email)
   user.warranties.each do |warranty|
     page.should_not have_selector("li#warranty_#{warranty.id}")

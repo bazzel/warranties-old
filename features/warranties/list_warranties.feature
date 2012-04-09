@@ -25,7 +25,7 @@ Feature: List warranties
      | name                  | warranty                        |
      | Electrical toothbrush | Electrical_toothbrush.jpeg      |
     And I go to the warranties page
-    Then I should not see a listing of my warranties that belong to "mary@example.com"
+    Then I should not see a listing of warranties that belong to "mary@example.com"
 
 
 

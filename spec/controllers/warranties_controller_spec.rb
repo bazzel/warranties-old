@@ -6,14 +6,16 @@ describe WarrantiesController do
   before(:each) do
     @current_user = mock_model(User, :locale => 'en')
     controller.stub(:current_user).and_return(@current_user)
+
+    @warranties = double
+    @current_user.stub(:warranties).and_return(@warranties)
+
     @warranty = double
     Warranty.stub(:new).and_return(@warranty)
   end
 
   describe "GET index" do
     before(:each) do
-      @warranties = double
-      @current_user.stub(:warranties).and_return(@warranties)
       @warranties.stub(:all).and_return(@warranties)
     end
 
@@ -72,6 +74,7 @@ describe WarrantiesController do
 
   describe "POST create" do
     before(:each) do
+      @current_user.warranties.stub(:build).with({'these' => 'params'}).and_return(@warranty)
       @warranty.stub(:save).and_return(true)
     end
 
@@ -80,7 +83,7 @@ describe WarrantiesController do
     end
 
     it "assigns a newly created warranty to @warranty" do
-      Warranty.should_receive(:new).with({'these' => 'params'}).and_return(@warranty)
+      @current_user.warranties.should_receive(:build).with({'these' => 'params'}).and_return(@warranty)
       do_post
       assigns(:warranty).should == @warranty
     end

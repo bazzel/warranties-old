@@ -13,7 +13,7 @@ class WarrantiesController < ApplicationController
   end
 
   def create
-    @warranty = Warranty.new(params[:warranty])
+    @warranty = current_user.warranties.build(params[:warranty])
     if @warranty.save
       redirect_to(warranty_path(@warranty), :notice => "New warranty created.")
     else
