@@ -12,6 +12,7 @@ gem "fog",                    "~> 1.3.1" # The Ruby cloud services library.
 gem "haml",                   "~> 3.1.4"
 gem "jquery-rails",           "~> 2.0.1"
 gem "mysql2",                 "~> 0.3.11"
+gem "rmagick",                "~> 2.13.1"
 gem "settingslogic",          "~> 2.0.8" # A simple and straightforward settings solution that uses an ERB enabled YAML file and a singleton design pattern.
 gem "simple_form",            "~> 2.0.1"
 

@@ -11,3 +11,19 @@ body.sign {
     @extend .offset3;
   }
 }
+
+body {
+  padding-top: 5em;
+  header {
+    @extend .navbar;
+    @extend .navbar-fixed-top;
+    @extend .navbar-inner;
+    @extend .container-fluid;
+    nav {
+      @extend .nav-collapse;
+      > ul {
+        @extend .nav;
+      }
+    }
+  }
+}

@@ -9,8 +9,25 @@ describe WarrantiesController do
   end
 
   describe "GET index" do
+    before(:each) do
+      @warranties = double
+      Warranty.stub(:all).and_return(@warranties)
+    end
 
+    def do_get
+      get :index
+    end
 
+    it "assigns @warranties" do
+      Warranty.should_receive(:all).and_return(@warranties)
+      do_get
+      assigns(:warranties).should == @warranties
+    end
+
+    it "renders 'index'" do
+      do_get
+      response.should render_template('index')
+    end
   end
 
   describe "GET new" do
