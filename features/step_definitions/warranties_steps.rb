@@ -21,7 +21,6 @@ Given /^I create a valid warranty$/ do
 end
 
 Then /^I should see a listing of my warranties$/ do
-  save_and_open_page
   @warranties.each do |warranty|
     page.should have_content warranty.name
     page.should have_selector("img[src='#{warranty.warranty_url(:thumb)}']")

@@ -1,9 +1,16 @@
-%ul.nav.nav-list
-  %li
-    = link_to "Add Warranty", new_warranty_path
+%section
+  %aside
+    %ul.nav.nav-list
+      %li
+        = link_to "Add Warranty", new_warranty_path
 
 
-- @warranties.each do |warranty|
-  = warranty.name
-  = warranty.expires_on
-  = image_tag(warranty.warranty_url(:thumb))
+  %section
+    %ul.thumbnails
+      - @warranties.each do |warranty|
+        %li.thumbnail
+          = image_tag(warranty.warranty_url(:thumb))
+          %h5= warranty.name
+          .expires_on
+            %span Expires on:
+            = warranty.expires_on

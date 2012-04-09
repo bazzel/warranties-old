@@ -14,6 +14,7 @@ body.sign {
 
 body {
   padding-top: 5em;
+  @extend .container-fluid;
   header {
     @extend .navbar;
     @extend .navbar-fixed-top;
@@ -23,6 +24,21 @@ body {
       @extend .nav-collapse;
       > ul {
         @extend .nav;
+      }
+    }
+  }
+
+  div[role='main'] {
+    @extend .container-fluid;
+    > section {
+      @extend .row-fluid;
+
+      > aside {
+        @include makeFluidColumn(3);
+        margin-left: 0;
+      }
+      > section {
+        @include makeFluidColumn(9);
       }
     }
   }
