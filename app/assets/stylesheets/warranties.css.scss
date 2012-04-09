@@ -4,6 +4,16 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
 
+nav.side-nav {
+  @extend .well;
+  @extend .sidebar-nav;
+  padding: .5em 0;
+  > ul {
+    @extend .nav;
+    @extend .nav-list;
+  }
+}
+
 ul.warranties {
   @extend .thumbnails;
   li.warranty {
