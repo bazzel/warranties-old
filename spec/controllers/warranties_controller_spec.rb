@@ -117,4 +117,32 @@ describe WarrantiesController do
     end
   end
 
+  describe "DELETE destroy" do
+
+    before(:each) do
+      @current_user.warranties.stub(:find).with("42").and_return(@warranty)
+      @warranty.stub(:destroy).and_return(true)
+    end
+
+    def do_delete
+      delete :destroy, :id => "42"
+    end
+
+    it "destroys the requested warranty" do
+      @current_user.warranties.should_receive(:find).with("42").and_return(@warranty)
+      @warranty.should_receive(:destroy)
+      do_delete
+    end
+
+    it "redirects to warranties_path" do
+      do_delete
+      response.should redirect_to(warranties_path)
+    end
+
+    it "flashes notification" do
+      do_delete
+      flash[:notice].should == "Warranty deleted."
+    end
+  end
+
 end

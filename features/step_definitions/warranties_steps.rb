@@ -23,6 +23,17 @@ When /^I click on the image of the first warranty$/ do
   end
 end
 
+When /^I delete the first warranty$/ do
+  @warranty = Warranty.first
+  within("#warranty_#{@warranty.id}") do
+    click_link "Destroy"
+  end
+end
+
+Then /^I have (\d+) warranties left$/ do |count|
+  @current_user.warranties.count.should == count.to_i
+end
+
 Given /^I create a valid warranty$/ do
   within('form') do
     fill_in "Name", :with => "Lamp"

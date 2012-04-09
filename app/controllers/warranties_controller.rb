@@ -20,4 +20,10 @@ class WarrantiesController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    @warranty = current_user.warranties.find(params[:id])
+    @warranty.destroy
+    redirect_to(warranties_path, :notice => "Warranty deleted.")
+  end
 end
