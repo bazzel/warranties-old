@@ -1,7 +1,7 @@
 class WarrantiesController < ApplicationController
 
   def index
-    @warranties = Warranty.all
+    @warranties = current_user.warranties.all
   end
 
   def new

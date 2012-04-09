@@ -4,6 +4,8 @@ describe WarrantiesController do
   login_user
 
   before(:each) do
+    @current_user = mock_model(User, :locale => 'en')
+    controller.stub(:current_user).and_return(@current_user)
     @warranty = double
     Warranty.stub(:new).and_return(@warranty)
   end
@@ -11,7 +13,8 @@ describe WarrantiesController do
   describe "GET index" do
     before(:each) do
       @warranties = double
-      Warranty.stub(:all).and_return(@warranties)
+      @current_user.stub(:warranties).and_return(@warranties)
+      @warranties.stub(:all).and_return(@warranties)
     end
 
     def do_get
@@ -19,7 +22,7 @@ describe WarrantiesController do
     end
 
     it "assigns @warranties" do
-      Warranty.should_receive(:all).and_return(@warranties)
+      @current_user.warranties.should_receive(:all).and_return(@warranties)
       do_get
       assigns(:warranties).should == @warranties
     end

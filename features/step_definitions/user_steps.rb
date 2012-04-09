@@ -4,11 +4,11 @@ Given /^I am not signed in$/ do
 end
 
 Given /^I have an account with email "([^"]*)"$/ do |email|
-  @user = FactoryGirl.create(:user, :email => email)
+  @user = User.find_by_email(email) || FactoryGirl.create(:user, :email => email)
 end
 
 Given /^I am logged in as a user with email "([^"]*)" and password "([^"]*)"$/ do |email, password|
-  User.create :email => email, :password => password
+  @current_user = User.create :email => email, :password => password
 
   visit new_user_session_path
   fill_in "Email", :with => email

@@ -1,11 +1,15 @@
 Given /^I have the following warranties:$/ do |table|
+  step %{a user with email "#{@current_user.email}" has the following warranties:}, table
+end
+
+Given /^a user with email "([^"]*)" has the following warranties:$/ do |email, table|
+  step %{I have an account with email "#{email}"}
+
   table.map_headers! {|header| header.downcase.to_sym }
   table.map_column!('warranty') {|warranty| File.open(File.join(Rails.root, 'spec', 'fixtures', warranty)) }
 
-  @warranties = []
-
   table.hashes.each do |hash|
-    @warranties << FactoryGirl.create(:warranty, hash)
+    @user.warranties << FactoryGirl.create(:warranty, hash)
   end
 end
 
@@ -31,9 +35,17 @@ Given /^I create a valid warranty$/ do
 end
 
 Then /^I should see a listing of my warranties$/ do
-  @warranties.each do |warranty|
+  @current_user.warranties.each do |warranty|
+    page.should have_selector("li#warranty_#{warranty.id}")
     page.should have_content warranty.name
     page.should have_selector("img[src='#{warranty.warranty_url(:thumb)}']")
+  end
+end
+
+Then /^I should not see a listing of my warranties that belong to "([^"]*)"$/ do |email|
+  user = User.find_by_email(email)
+  user.warranties.each do |warranty|
+    page.should_not have_selector("li#warranty_#{warranty.id}")
   end
 end
 
