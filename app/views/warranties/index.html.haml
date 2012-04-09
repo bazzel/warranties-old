@@ -4,12 +4,11 @@
       %li
         = link_to "Add Warranty", new_warranty_path
 
-
   %section
-    %ul.thumbnails
+    %ul.warranties
       - @warranties.each do |warranty|
-        %li.thumbnail
-          = image_tag(warranty.warranty_url(:thumb))
+        = content_tag_for(:li, warranty) do
+          = link_to(image_tag(warranty.warranty_url(:thumb)), warranty)
           %h5= warranty.name
           .expires_on
             %span Expires on:

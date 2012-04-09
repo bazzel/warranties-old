@@ -12,4 +12,5 @@ Feature: List warranties
      | Electrical toothbrush | Electrical_toothbrush.jpeg      |
     And I go to the warranties page
     Then I should see a listing of my warranties
-
+    When I click on the image of the first warranty
+    Then I should see the warranty's detail page

@@ -9,6 +9,16 @@ Given /^I have the following warranties:$/ do |table|
   end
 end
 
+When /^I click on the image of the first warranty$/ do
+  @warranty = Warranty.first
+  within("#warranty_#{@warranty.id}") do
+    filename = @warranty.warranty_url(:thumb)
+    basename = File.basename(filename, File.extname(filename))
+    alt_text = basename.capitalize
+    click_link alt_text
+  end
+end
+
 Given /^I create a valid warranty$/ do
   within('form') do
     fill_in "Name", :with => "Lamp"
@@ -29,9 +39,9 @@ end
 
 Then /^I should see the warranty's detail page$/ do
   current_path.should == warranty_path(@warranty)
-  within_flash do
-    page.should have_content("New warranty created.")
-  end
+  # within_flash do
+  #   page.should have_content("New warranty created.")
+  # end
   page.should have_content(@warranty.name)
   page.should have_selector("img[src='#{@warranty.warranty.url}']")
 end

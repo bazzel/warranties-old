@@ -32,7 +32,6 @@ body {
     @extend .container-fluid;
     > section {
       @extend .row-fluid;
-
       > aside {
         @include makeFluidColumn(3);
         margin-left: 0;
