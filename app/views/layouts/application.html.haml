@@ -21,10 +21,20 @@
       = link_to "Warranties", root_path, :class => "brand"
       %nav
         %ul
-          %li= link_to "Warranties", warranties_path
+          %li.active= link_to "Warranties", warranties_path
           %li= link_to "Contact Us", '#'
+      %nav.nav.pull-right
+        %li.divider-vertical
+        %li= link_to "Sign out", destroy_user_session_path, :method => :delete
+      %p.navbar-text.pull-right
+        Logged in as
+        = link_to "patrick.baselier@gmail.com", '#'
 
     %div{:role => "main"}
-      = render "shared/flashes"
-      = yield
+      %section
+        = render "side"
+
+        %section
+          = render "flashes"
+          = yield
     %footer
