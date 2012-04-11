@@ -28,7 +28,7 @@
         %li= link_to "Sign out", destroy_user_session_path, :method => :delete
       %p.navbar-text.pull-right
         Logged in as
-        = link_to "patrick.baselier@gmail.com", '#'
+        = link_to current_user.email, edit_user_registration_path
 
     %div{:role => "main"}
       %section

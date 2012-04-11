@@ -70,8 +70,10 @@ module Warranties
     end
 
     config.to_prepare do
+      # Use different layout for devise related views...
       DeviseController.layout "sign"
+      # ... however, when the user is signed in, then we use the 'normal' layout.
+      Devise::RegistrationsController.layout Proc.new { |controller| user_signed_in? ? "application"   : "sign" }
     end
-
   end
 end

@@ -17,5 +17,12 @@ Given /^I am logged in as a user with email "([^"]*)" and password "([^"]*)"$/ d
 end
 
 # == When
+When /^I edit my profile$/ do
+  click_link @current_user.email
+end
 
 # == Then
+Then /^I should see my profile page$/ do
+  current_path.should == edit_user_registration_path
+  step %{I should see the header}
+end
