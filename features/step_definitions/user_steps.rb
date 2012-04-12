@@ -21,6 +21,13 @@ When /^I edit my profile$/ do
   click_link @current_user.email
 end
 
+When /^I change my language to "([^"]*)"$/ do |language|
+  step %{I edit my profile}
+  select("Nederlands", :from => "Language")
+  fill_in("Current password", :with => @current_user.password)
+  click_button "Update User"
+end
+
 # == Then
 Then /^I should see my profile page$/ do
   current_path.should == edit_user_registration_path

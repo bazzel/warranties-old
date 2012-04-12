@@ -4,6 +4,7 @@
     = f.input :email
     = f.input :password, :hint => "leave blank if you don't want to change it"
     = f.input :password_confirmation
+    = f.input :language, :collection => locale_selection, :selected => I18n.locale
     = f.input :current_password, :hint => "we need your current password to confirm your changes"
 
     .form-actions

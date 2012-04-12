@@ -8,5 +8,9 @@ Feature: Edit profile
     When I edit my profile
     Then I should see my profile page
 
+  Scenario: Changing locale settings
+    Given I am logged in as a user with email "john@example.com" and password "secret"
+    When I change my language to "Nederlands"
+    Then the application is presented in Dutch
 
 

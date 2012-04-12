@@ -27,8 +27,7 @@
         %li.divider-vertical
         %li= link_to "Sign out", destroy_user_session_path, :method => :delete
       %p.navbar-text.pull-right
-        Logged in as
-        = link_to current_user.email, edit_user_registration_path
+        = t('header.current_user.html', :current_user => link_to(current_user.email, edit_user_registration_path))
 
     %div{:role => "main"}
       %section

@@ -1,0 +1,4 @@
+nl:
+  header:
+    current_user:
+      html: Ingelogd als %{current_user}
