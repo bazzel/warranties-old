@@ -14,3 +14,4 @@
 /log/*.log
 /tmp
 public/uploads/*
+config/locales/missing_translations.yml

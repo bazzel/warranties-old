@@ -1,10 +1,179 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+#
+# Structure based on http://rubyist.info/rails/i18n/
 
 en:
-  header:
-    current_user:
+# The `app` node contains keys related to the main application.
+#   app:
+#     site_name: ...
+#     site_description: ...
+#     site_headline: ...
+#
+#
+  # The `flash` node contains all flash message keys,
+  # regardless the flash type.
+  #
+  # Tip: avoid prefixing flash keys with the type of the flash
+  # because the same message can be reused in different flash types.
+  # Also, you might want to change the flash level in the future.
+  flash:
+    # article_created: "The article has been successfully created."
+    # article_updated: "The article has been successfully updated."
+    # bookmark_created: "The bookmark has been successfully created."
+    warranty_created: "New warranty created."
+
+
+  # The `text` node contains keys shared by more than one view
+  # or across the entire application.
+  text:
+    # Action keys are prefixed with `action_`.
+    #
+    #   <a href="#"><%= t("text.action_edit") %></a> or
+    #   <a href="#"><%= t("text.action_cancel") %></a>
+    #
+    # action_edit: "edit"
+    action_cancel: "Cancel"
+
+    # Button keys are prefixed with `action_`.
+    #
+    #   <%= submit_tag t("text.button_login") %> or
+    #   <a href="#"><%= t("text.action_cancel") %></a>
+    #
+    # button_login: "Login"
+    # button_search: "Search"
+
+    # h1, h2, h3 keys are prefixed with `header_`.
+    #
+    #   <h1><%= t("text.header_admin_settings") %></h1>
+    #
+#     header_admin_settings: "Admin Settings"
+#     header_content: "Content"
+#
+#     # Title attribute keys are prefixed with `keys_`.
+#     #
+#     #   <a href="#" title="<%= t("text.title_goto_site") %>">Hello</a>
+#     #
+#     title_goto_site: "Go to this site"
+#     title_open_page: "Open this page"
+#
+#     # When the title references a link to a page defined in the
+#     # routes.rb file, you SHOULD use the route name in the key.
+#     #
+#     # This trick reduces the chances that you create a localization string
+#     # for the same string more than once.
+#     #
+#     # <%= link_to "New", new_user_path, :title => t("text.title_new_user_path") %>
+#     #
+#     title_users_path: "View user list"
+#     title_new_user_path: "Create a new user"
+    warranties_path: "Warranties"
+    destroy_user_session_path: "Sign out"
+#
+#     # Short messages are prefixed with `message_`.
+#     #
+#     # <% if @users.empty? %>
+#     #   <%= message_users_empty %>
+#     # <% else %>
+#     #   ...
+#     # <% end %>
+#     #
+#     message_users_empty: "There are no users."
+#     message_required_user: "You must be logged to perform this action."
+#
+#     # Use the placeholder `foo` to reference a variable in the key.
+#     suggested_by_foo: "Suggested by {{username}}"
+#     published_by_foo: "Published by {{username}}"
+#     foo_ago: "{{time}} ago"
+    logged_in_as_foo:
       html: Logged in as %{current_user}
+#
+#     # Use the schema `x_string` to define a key which interpolates a counter.
+#     x_comments:
+#       one:  "1 comment"
+#       other: "{{count}} comments"
+#     last_x_users:
+#       one:  "Last 1 comment"
+#       other: "Last {{count}} comments"
+#
+#
+  # The ActionController keys follows Rails convention to have a node
+  # corresponding to the controller name, including several nodes,
+  # one for every controller action.
+  #
+  # If you follow this convention, you can use the shortcut
+  #
+  #   t(".meta_description")
+  #
+  # instead of
+  #
+  #   t("users_controller.index.meta_description")
+  #
+  # == Requirements
+  #
+  # ACTION required keys:
+  #
+  # title - The content of the <title> tag
+  # meta_description - The content of the meta description tag.
+  #
+  # == Example
+  #
+  # users_controller:
+  #   index:
+  #     ...
+  #   show:
+  #     ...
+  #
+#   CONTROLLER:
+#     ACTION:
+#       title: ...
+#       meta_description: ...
+#     ACTION:
+#       title: ...
+#       meta_description: ...
+#
+#
+#   # The ActionMailer keys follows the same ActionController conventions.
+#   #
+#   # The main node is the name of the ActionMailer class. Each sub-node
+#   # represents a mailer action.
+#   #
+#   # == Requirements
+#   #
+#   # ACTION required keys:
+#   #
+#   # subject - The subject of the email.
+#   #
+#   # == Example
+#   #
+#   # user_mailer:
+#   #   notification:
+#   #     subject: "[{{project}}] New Contact Message"
+#   #   welcome_message:
+#   #     subject: "Welcome to {{project}}!"
+#   #
+#   MAILER:
+#     ACTION:
+#       subject: "[{{project}}] New Contact Message"
+#       ...
+#     ACTION:
+#       subject: "Welcome to {{project}}!"
+#       ...
+
+  activerecord:
+    models:
+     warranty: Warranty
+    attributes:
+      warranty:
+        name: Name
+        expires_on: Expires on
+        warranty: Warranty
+  application:
+    side:
+      new_warranty: Add Warranty
+  warranties:
+    new:
+      title: New Warranty
   helpers:
     submit:
       user:
@@ -12,5 +181,7 @@ en:
       password:
         create: "Send me reset password instructions"
         update: "Change my password"
+      warranty:
+        create: Create
       registration:
         create: "Sign up"

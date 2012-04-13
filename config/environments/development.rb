@@ -35,4 +35,16 @@ Warranties::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # See https://github.com/svenfuchs/i18n-missing_translations
+  # I18n::MissingTranslations is a simple tool that helps with finding missing translations in your application.
+  #
+  #  - start the server
+  #  - click around/work on stuff
+  #  - check config/locales/missing_translations.yml
+  #  - copy any missing translation keys to your actual locale files and correct the translations
+  #  - delete or clear config/locales/missing_translations.yml
+  #  - restart the server
+  require 'i18n/missing_translations'
+  config.app_middleware.use(I18n::MissingTranslations)
 end
