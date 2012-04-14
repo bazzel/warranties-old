@@ -19,4 +19,5 @@ include CarrierWave::Test::Matchers
     @uploader.thumb.should have_dimensions(260, 260)
   end
 
+  its(:extension_white_list) { should =~ %w(jpg jpeg gif png) }
 end

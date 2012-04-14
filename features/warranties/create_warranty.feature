@@ -28,3 +28,8 @@ Feature: Create a warranty
     And I create an invalid warranty
     Then I should see that the warranty is invalid
 
+  Scenario: Upload an invalid file
+    Given I am on the new warranty page
+    And I upload an invalid file
+    Then I should see that the file type is invalid
+

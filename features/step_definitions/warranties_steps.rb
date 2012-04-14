@@ -45,6 +45,19 @@ Given /^I create a valid warranty$/ do
   @warranty = @current_user.warranties.last
 end
 
+Given /^I create an invalid warranty$/ do
+  within('form') do
+    click_button "Create"
+  end
+end
+
+Given /^I upload an invalid file$/ do
+  within('form') do
+    attach_file "Warranty", File.join(Rails.root, 'spec', 'fixtures', 'invalid.xyz')
+    click_button "Create"
+  end
+end
+
 Then /^I should see a listing of my warranties$/ do
   @current_user.warranties.each do |warranty|
     page.should have_selector("li#warranty_#{warranty.id}")
@@ -69,12 +82,6 @@ Then /^I should see the warranty's detail page$/ do
   page.should have_selector("img[src='#{@warranty.warranty.url}']")
 end
 
-Given /^I create an invalid warranty$/ do
-  within('form') do
-    click_button "Create"
-  end
-end
-
 When /^I cancel the creation$/ do
   click_link "Cancel"
 end
@@ -84,3 +91,10 @@ Then /^I should see that the warranty is invalid$/ do
     page.should have_content("can't be blank")
   end
 end
+
+Then /^I should see that the file type is invalid$/ do
+  within('form') do
+    page.should have_content('You are not allowed to upload "xyz" files, allowed types: ["jpg", "jpeg", "gif", "png"]')
+  end
+end
+

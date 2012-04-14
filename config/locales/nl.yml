@@ -118,6 +118,7 @@ nl:
   errors: &errors
     format: ! '%{attribute} %{message}'
     messages:
+      extension_white_list_error: "Je kunt geen %{extension} bestanden toevoegen; toegestaan zijn: %{allowed_types}"
       accepted: moet worden geaccepteerd
       blank: moet opgegeven zijn
       confirmation: komt niet met de bevestiging overeen
