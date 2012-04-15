@@ -79,7 +79,7 @@ Then /^I should see the warranty's detail page$/ do
   #   page.should have_content("New warranty created.")
   # end
   page.should have_content(@warranty.name)
-  page.should have_selector("img[src='#{@warranty.warranty.url}']")
+  page.should have_selector("img[src='#{@warranty.warranty_url(:thumb)}']")
 end
 
 When /^I cancel the creation$/ do
