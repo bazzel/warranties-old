@@ -21,6 +21,8 @@ module NavigationHelpers
       warranty_path(@warranty)
     when /the warranty's edit page/
       edit_warranty_path(@warranty)
+    # when /the crop page/
+    #   crop_warranty_path(@warranty)
 
     # when /the new car page/
     #   new_car_path

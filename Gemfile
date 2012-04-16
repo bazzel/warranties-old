@@ -28,7 +28,7 @@ group :assets do
   gem "coffee-rails",         "~> 3.2.1"
   gem "bootstrap-datepicker-rails", "~> 0.6.3"
   gem "bootstrap-sass",       "~> 2.0.2"
-  # gem "jcrop-rails",          "~> 1.0.2"
+  gem "jcrop-rails",          "~> 1.0.2"
   gem "modernizr-rails",      "~> 2.0.6"
   gem "sass-rails",           "~> 3.2.3"
 

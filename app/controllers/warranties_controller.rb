@@ -18,7 +18,11 @@ class WarrantiesController < ApplicationController
   def create
     @warranty = current_user.warranties.build(params[:warranty])
     if @warranty.save
-      redirect_to(warranty_path(@warranty), :notice => t('flash.warranty_created'))
+      if params[:warranty][:photo]
+        render :crop
+      else
+        redirect_to(warranty_path(@warranty), :notice => t('flash.warranty_created'))
+      end
     else
       render :new
     end

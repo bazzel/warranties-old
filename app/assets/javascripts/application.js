@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jcrop
 //= require jquery.fancybox
 //= require_tree .
 // Loads all Bootstrap javascripts

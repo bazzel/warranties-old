@@ -1,7 +1,9 @@
 Warranties::Application.routes.draw do
   devise_for :users
 
-  resources :warranties
+  resources :warranties do
+    get 'crop', :on => :member
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -9,6 +9,9 @@ $ ->
 $ ->
   new FancyBox()
 
+$ ->
+  new PhotoCropper()
+
 class FancyBox
   constructor: ->
     $("a.fancybox").fancybox
@@ -20,3 +23,17 @@ class FancyBox
       closeClick: true
       helpers:
         overlay: null
+
+class PhotoCropper
+  constructor: ->
+    $('#cropbox').Jcrop
+      aspectRatio: 1
+      setSelect: [0, 0, 600, 600]
+      onSelect: @update
+      onChange: @update
+
+  update: (coords) =>
+    $('#warranty_crop_x').val(coords.x)
+    $('#warranty_crop_y').val(coords.y)
+    $('#warranty_crop_w').val(coords.w)
+    $('#warranty_crop_h').val(coords.h)

@@ -89,12 +89,12 @@ describe WarrantiesController do
 
   describe "POST create" do
     before(:each) do
-      @current_user.warranties.stub(:build).with({'these' => 'params'}).and_return(@warranty)
+      @current_user.warranties.stub(:build).with(hash_including({'these' => 'params'})).and_return(@warranty)
       @warranty.stub(:save).and_return(true)
     end
 
-    def do_post
-      post :create, :warranty => {:these => 'params'}
+    def do_post(options = {})
+      post :create, :warranty => {:these => 'params'}.merge(options)
     end
 
     it "assigns a newly created warranty to @warranty" do
@@ -109,14 +109,23 @@ describe WarrantiesController do
     end
 
     describe "success" do
-      it "redirects to warranty_path" do
-        do_post
-        response.should redirect_to(warranty_path(@warranty))
+      describe "without photo" do
+        it "redirects to warranty_path" do
+          do_post
+          response.should redirect_to(warranty_path(@warranty))
+        end
+
+        it "flashes notification" do
+          do_post
+          flash[:notice].should == "New warranty created."
+        end
       end
 
-      it "flashes notification" do
-        do_post
-        flash[:notice].should == "New warranty created."
+      describe "with photo" do
+        it "render 'crop'" do
+          do_post({ :photo => 'double' })
+          response.should render_template(:crop)
+        end
       end
     end
 
@@ -198,7 +207,7 @@ describe WarrantiesController do
 
     it "flashes notification" do
       do_delete
-      flash[:notice].should == "Warranty deleted."
+      flash[:notice].should == I18n.t('flash.warranty_destroyed')
     end
   end
 

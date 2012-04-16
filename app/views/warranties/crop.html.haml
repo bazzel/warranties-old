@@ -1,0 +1,8 @@
+= simple_form_for @warranty do |f|
+  %legend Crop Photo
+  - %w[x y w h].each do |attribute|
+    = f.hidden_field "crop_#{attribute}"
+
+  = image_tag @warranty.photo_url(:large), id: "cropbox"
+  .form-actions
+    = f.submit "Crop", :class => 'btn-primary'

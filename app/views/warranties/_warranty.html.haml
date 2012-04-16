@@ -1,5 +1,5 @@
 = content_tag_for(:li, warranty) do
-  = link_to(image_tag(warranty.warranty_url(:thumb)), warranty)
+  = link_to(image_tag(warranty.photo_url(:thumb)), warranty)
   .caption
     %h5= warranty.name
     %dl

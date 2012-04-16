@@ -91,11 +91,30 @@ Given /^I update the warranty with invalid data$/ do
   end
 end
 
+Given /^I enter valid data on the warranty's form$/ do
+  within('form') do
+    fill_in "Name", :with => "Lamp"
+    fill_in "Expires on", :with => 2.years.from_now
+    attach_file "Warranty", File.join(Rails.root, 'spec', 'fixtures', 'warranty.gif')
+  end
+end
+
+Given /^I upload a photo of the warranty's product$/ do
+  within('form') do
+    attach_file "Photo", File.join(Rails.root, 'spec', 'fixtures', 'photo.gif')
+  end
+end
+
 Given /^I upload an invalid file$/ do
   within('form') do
     attach_file "Warranty", File.join(Rails.root, 'spec', 'fixtures', 'invalid.xyz')
     click_button "Create"
   end
+end
+
+Given /^I submit the form$/ do
+  click_button "Create"
+  @warranty = @current_user.warranties.last
 end
 
 Then /^I should see a listing of my warranties$/ do
@@ -129,6 +148,10 @@ end
 
 When /^I cancel the (?:creation|update)$/ do
   click_link "Cancel"
+end
+
+When /^I crop the photo of the warranty's product$/ do
+  click_button "Crop"
 end
 
 Then /^I should see that the warranty is invalid$/ do
