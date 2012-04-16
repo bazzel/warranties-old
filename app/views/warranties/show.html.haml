@@ -1,2 +1,7 @@
-%p= @warranty.name
-%a.fancybox{ :href => @warranty.warranty_url(:large) }= image_tag(@warranty.warranty_url(:thumb))
+.page-header
+  %h1= @warranty.name
+%p
+  =link_to(image_tag(@warranty.warranty_url(:thumb)), @warranty.warranty_url(:large), :class => 'fancybox', :id => "warranty_warranty_#{@warranty.id}")
+%p
+  %strong Expires on:
+  = @warranty.expires_on

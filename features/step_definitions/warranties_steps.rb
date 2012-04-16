@@ -1,3 +1,8 @@
+Given /^I have the following warranty:$/ do |table|
+  step %{a user with email "#{@current_user.email}" has the following warranties:}, table
+  @warranty = @user.warranties.first
+end
+
 Given /^I have the following warranties:$/ do |table|
   step %{a user with email "#{@current_user.email}" has the following warranties:}, table
 end
@@ -28,6 +33,10 @@ When /^I delete the first warranty$/ do
   within("#warranty_#{@warranty.id}") do
     click_link "Destroy"
   end
+end
+
+Given /^I click on the image for the warranty$/ do
+  click_link "warranty_warranty_#{@warranty.id}"
 end
 
 Then /^I have (\d+) warranties left$/ do |count|
@@ -82,6 +91,10 @@ Then /^I should see the warranty's detail page$/ do
   page.should have_selector("img[src='#{@warranty.warranty_url(:thumb)}']")
 end
 
+Then /^I should see a larger version popping up$/ do
+  page.should have_css('.fancybox-wrap')
+end
+
 When /^I cancel the creation$/ do
   click_link "Cancel"
 end
@@ -97,4 +110,3 @@ Then /^I should see that the file type is invalid$/ do
     page.should have_content('You are not allowed to upload "xyz" files, allowed types: ["jpg", "jpeg", "gif", "png"]')
   end
 end
-

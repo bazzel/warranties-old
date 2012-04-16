@@ -17,6 +17,8 @@ module NavigationHelpers
       new_user_session_path
     when /the new warranty page/
       new_warranty_path
+    when /the warranty's detail page/
+      warranty_path(@warranty)
     # when /the new car page/
     #   new_car_path
 
