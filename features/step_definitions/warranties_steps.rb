@@ -132,6 +132,12 @@ Then /^I should see the warranty's detail page$/ do
   # end
   page.should have_content(@warranty.name)
   page.should have_selector("img[src='#{@warranty.warranty_url(:thumb)}']")
+
+  if @warranty.photo?
+    page.should have_selector("img[src='#{@warranty.photo_url(:thumb)}']")
+  else
+    page.should_not have_selector("img[src='#{@warranty.photo_url(:thumb)}']")
+  end
 end
 
 Then /^I should see a larger version popping up$/ do

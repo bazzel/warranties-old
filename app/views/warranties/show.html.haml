@@ -1,9 +1,8 @@
 .page-header
   %h1= @warranty.name
-%p
-  = image_tag(@warranty.photo_url(:thumb))
-%p
-  =link_to(image_tag(@warranty.warranty_url(:thumb)), @warranty.warranty_url(:large), :class => 'fancybox', :id => "warranty_warranty_#{@warranty.id}")
+
+%p= image_tag(@warranty.photo_url(:thumb)) if @warranty.photo?
+%p=link_to(image_tag(@warranty.warranty_url(:thumb)), @warranty.warranty_url(:large), :class => 'fancybox', :id => "warranty_warranty_#{@warranty.id}")
 %p
   %strong Expires on:
   = @warranty.expires_on

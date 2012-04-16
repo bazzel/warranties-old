@@ -6,7 +6,7 @@ Feature: Create a warranty
   Background:
     Given I am logged in as a user with email "john@example.com" and password "secret"
 
-  Scenario: Create a valid warranty
+  Scenario: Crop the warranty's photo
     Given I am on the new warranty page
     And I enter valid data on the warranty's form
     And I upload a photo of the warranty's product
