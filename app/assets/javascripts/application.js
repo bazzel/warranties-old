@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require fancybox
+//= require jquery.fancybox
 //= require_tree .
 // Loads all Bootstrap javascripts
 //= require bootstrap
