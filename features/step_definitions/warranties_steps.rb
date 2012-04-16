@@ -21,7 +21,7 @@ end
 When /^I click on the image of the first warranty$/ do
   @warranty = Warranty.first
   within("#warranty_#{@warranty.id}") do
-    filename = @warranty.warranty_url(:thumb)
+    filename = @warranty.photo_url(:thumb)
     basename = File.basename(filename, File.extname(filename))
     alt_text = basename.capitalize
     click_link alt_text
@@ -121,7 +121,7 @@ Then /^I should see a listing of my warranties$/ do
   @current_user.warranties.each do |warranty|
     page.should have_selector("li#warranty_#{warranty.id}")
     page.should have_content warranty.name
-    page.should have_selector("img[src='#{warranty.warranty_url(:thumb)}']")
+    page.should have_selector("img[src='#{warranty.photo_url(:thumb)}']")
   end
 end
 
