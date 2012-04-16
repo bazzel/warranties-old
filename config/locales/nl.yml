@@ -5,6 +5,10 @@ nl:
     destroy_user_session_path: Afmelden
     logged_in_as_foo:
       html: Ingelogd als %{current_user}
+  flash:
+    warranty_updated: Garantiebewijs is bijgewerkt
+    warranty_created: Garantiebewijs is aangemaakt
+    warranty_destroyed: Garantiebewijs is verwijderd
   activerecord:
     models:
      warranty: Garantiebewijs
@@ -19,6 +23,8 @@ nl:
   warranties:
     new:
       title: Garantiebewijs toevoegen
+    edit:
+      title: Garantiebewijs wijzigen
   date:
     abbr_day_names:
     - zon

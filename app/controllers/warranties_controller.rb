@@ -1,4 +1,5 @@
 class WarrantiesController < ApplicationController
+  before_filter :find_warranty, :only => [:show, :edit, :update, :destroy]
 
   def index
     @warranties = current_user.warranties.all
@@ -9,11 +10,9 @@ class WarrantiesController < ApplicationController
   end
 
   def show
-    @warranty = Warranty.find(params[:id])
   end
 
   def edit
-    @warranty = current_user.warranties.find(params[:id])
   end
 
   def create
@@ -26,8 +25,6 @@ class WarrantiesController < ApplicationController
   end
 
   def update
-    @warranty = current_user.warranties.find(params[:id])
-
     if @warranty.update_attributes(params[:warranty])
       redirect_to(warranty_path(@warranty), :notice => t('flash.warranty_updated'))
     else
@@ -36,8 +33,12 @@ class WarrantiesController < ApplicationController
   end
 
   def destroy
-    @warranty = current_user.warranties.find(params[:id])
     @warranty.destroy
-    redirect_to(warranties_path, :notice => "Warranty deleted.")
+    redirect_to(warranties_path, :notice => t('flash.warranty_destroyed'))
   end
+
+  private
+    def find_warranty
+      @warranty = current_user.warranties.find(params[:id])
+    end
 end

@@ -1,9 +1,1 @@
-= simple_form_for(@warranty, :html => { :class => 'form-horizontal' }) do |f|
-  %legend= t('.title')
-  = f.input :name
-  = f.input :expires_on, :as => :string, :input_html => { :class => 'datepicker' }
-  = f.input :warranty
-
-  .form-actions
-    = f.submit :class => 'btn-primary'
-    = link_to t('text.action_cancel'), warranties_path, :class => 'btn'
+= render 'form', :warranty => @warranty

@@ -12,6 +12,8 @@ describe WarrantiesController do
 
     @warranty = double
     Warranty.stub(:new).and_return(@warranty)
+
+    @current_user.warranties.stub(:find).with('42').and_return(@warranty)
   end
 
   describe "GET index" do
@@ -52,10 +54,6 @@ describe WarrantiesController do
   end
 
   describe "GET edit" do
-    before(:each) do
-      @current_user.warranties.stub(:find).with('42').and_return(@warranty)
-    end
-
     def do_get
       get :edit, :id => '42'
     end
@@ -73,16 +71,12 @@ describe WarrantiesController do
   end
 
   describe "GET show" do
-    before(:each) do
-      Warranty.stub(:find).with('42').and_return(@warranty)
-    end
-
     def do_get
       get :show, :id => '42'
     end
 
     it "assigns the requested warranty as @warranty" do
-      Warranty.should_receive(:find).with('42').and_return(@warranty)
+      @current_user.warranties.should_receive(:find).with('42').and_return(@warranty)
       do_get
       assigns(:warranty).should == @warranty
     end
@@ -140,7 +134,6 @@ describe WarrantiesController do
 
   describe "PUT update" do
     before(:each) do
-      @current_user.warranties.stub(:find).with('42').and_return(@warranty)
       @warranty.stub(:update_attributes).with({ 'these' => 'params' }).and_return(true)
     end
 
@@ -184,9 +177,7 @@ describe WarrantiesController do
   end
 
   describe "DELETE destroy" do
-
     before(:each) do
-      @current_user.warranties.stub(:find).with("42").and_return(@warranty)
       @warranty.stub(:destroy).and_return(true)
     end
 

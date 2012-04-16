@@ -23,6 +23,7 @@ en:
     # bookmark_created: "The bookmark has been successfully created."
     warranty_created: "New warranty created."
     warranty_updated: "Warranty updated."
+    warranty_destroyed: "Warranty destroyed."
 
 
   # The `text` node contains keys shared by more than one view
@@ -175,6 +176,8 @@ en:
   warranties:
     new:
       title: New Warranty
+    edit:
+      title: Edit Warranty
   helpers:
     submit:
       user:
