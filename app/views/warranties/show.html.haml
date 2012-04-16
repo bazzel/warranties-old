@@ -5,3 +5,6 @@
 %p
   %strong Expires on:
   = @warranty.expires_on
+
+%p
+  = link_to "Edit", edit_warranty_path(@warranty), :class => 'btn'

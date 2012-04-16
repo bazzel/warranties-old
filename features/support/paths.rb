@@ -19,6 +19,9 @@ module NavigationHelpers
       new_warranty_path
     when /the warranty's detail page/
       warranty_path(@warranty)
+    when /the warranty's edit page/
+      edit_warranty_path(@warranty)
+
     # when /the new car page/
     #   new_car_path
 

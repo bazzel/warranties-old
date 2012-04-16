@@ -28,6 +28,17 @@ When /^I click on the image of the first warranty$/ do
   end
 end
 
+Given /^I click on the Edit button of the first warranty$/ do
+  @warranty = Warranty.first
+  within("#warranty_#{@warranty.id}") do
+    click_link "Edit"
+  end
+end
+
+Given /^I click on the Edit button$/ do
+  click_link "Edit"
+end
+
 When /^I delete the first warranty$/ do
   @warranty = Warranty.first
   within("#warranty_#{@warranty.id}") do
@@ -54,9 +65,29 @@ Given /^I create a valid warranty$/ do
   @warranty = @current_user.warranties.last
 end
 
+Given /^I update the warranty with valid data$/ do
+  visit edit_warranty_path(@warranty)
+  within('form') do
+    fill_in "Name", :with => "Lamp"
+    fill_in "Expires on", :with => 2.years.from_now
+    attach_file "Warranty", File.join(Rails.root, 'spec', 'fixtures', 'warranty.gif')
+    click_button "Update"
+  end
+end
+
 Given /^I create an invalid warranty$/ do
   within('form') do
     click_button "Create"
+  end
+end
+
+Given /^I update the warranty with invalid data$/ do
+  visit edit_warranty_path(@warranty)
+  within('form') do
+    fill_in "Name", :with => ""
+    fill_in "Expires on", :with => nil
+    attach_file "Warranty", File.join(Rails.root, 'spec', 'fixtures', 'invalid.xyz')
+    click_button "Update"
   end
 end
 
@@ -83,6 +114,7 @@ Then /^I should not see a listing of warranties that belong to "([^"]*)"$/ do |e
 end
 
 Then /^I should see the warranty's detail page$/ do
+  @warranty.reload
   current_path.should == warranty_path(@warranty)
   # within_flash do
   #   page.should have_content("New warranty created.")
@@ -95,7 +127,7 @@ Then /^I should see a larger version popping up$/ do
   page.should have_css('.fancybox-wrap')
 end
 
-When /^I cancel the creation$/ do
+When /^I cancel the (?:creation|update)$/ do
   click_link "Cancel"
 end
 

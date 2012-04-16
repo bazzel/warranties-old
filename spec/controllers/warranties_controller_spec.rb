@@ -51,6 +51,27 @@ describe WarrantiesController do
     end
   end
 
+  describe "GET edit" do
+    before(:each) do
+      @current_user.warranties.stub(:find).with('42').and_return(@warranty)
+    end
+
+    def do_get
+      get :edit, :id => '42'
+    end
+
+    it "assigns the requested warranty as @warranty" do
+      @current_user.warranties.should_receive(:find).with('42').and_return(@warranty)
+      do_get
+      assigns(:warranty).should == @warranty
+    end
+
+    it "renders 'edit'" do
+      do_get
+      response.should render_template('edit')
+    end
+  end
+
   describe "GET show" do
     before(:each) do
       Warranty.stub(:find).with('42').and_return(@warranty)
@@ -94,7 +115,7 @@ describe WarrantiesController do
     end
 
     describe "success" do
-      it "redirects to warranties_path" do
+      it "redirects to warranty_path" do
         do_post
         response.should redirect_to(warranty_path(@warranty))
       end
@@ -113,6 +134,51 @@ describe WarrantiesController do
       it "render new" do
         do_post
         response.should render_template(:new)
+      end
+    end
+  end
+
+  describe "PUT update" do
+    before(:each) do
+      @current_user.warranties.stub(:find).with('42').and_return(@warranty)
+      @warranty.stub(:update_attributes).with({ 'these' => 'params' }).and_return(true)
+    end
+
+    def do_put
+      put :update, :id => '42', :warranty => {'these' => 'params'}
+    end
+
+    it "assigns the requested warranty as @warranty" do
+      @current_user.warranties.should_receive(:find).with('42').and_return(@warranty)
+      do_put
+      assigns(:warranty).should == @warranty
+    end
+
+    it "updates the warranty" do
+      @warranty.should_receive(:update_attributes).with({ 'these' => 'params' }).and_return(true)
+      do_put
+    end
+
+    describe "success" do
+      it "redirects to warranty_path" do
+        do_put
+        response.should redirect_to(warranty_path(@warranty))
+      end
+
+      it "flashes notification" do
+        do_put
+        flash[:notice].should == I18n.t('flash.warranty_updated')
+      end
+    end
+
+    describe "failure" do
+      before(:each) do
+        @warranty.stub(:update_attributes).and_return(false)
+      end
+
+      it "render new" do
+        do_put
+        response.should render_template(:edit)
       end
     end
   end

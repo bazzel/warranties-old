@@ -6,4 +6,5 @@
       %dt Expires on:
       %dd= warranty.expires_on
     %p
-      = link_to "Destroy", warranty, :method => :delete, :confirm => "Are you sure?", :class => 'btn'
+      = link_to "Edit", edit_warranty_path(warranty), :class => 'btn'
+      = link_to "Destroy", warranty, :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-danger'

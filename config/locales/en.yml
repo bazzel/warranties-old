@@ -22,6 +22,7 @@ en:
     # article_updated: "The article has been successfully updated."
     # bookmark_created: "The bookmark has been successfully created."
     warranty_created: "New warranty created."
+    warranty_updated: "Warranty updated."
 
 
   # The `text` node contains keys shared by more than one view
