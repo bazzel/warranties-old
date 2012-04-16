@@ -1,6 +1,6 @@
 %aside
   %nav.side-nav
     %ul
-      %li.nav-header Warranties
-      %li= link_to "Warranties", warranties_path
-      %li= link_to "Add Warranty", new_warranty_path
+      %li.nav-header= Warranty.model_name.human(:count => 2)
+      %li= link_to t('text.title_warranties_path'), warranties_path
+      %li= link_to t('text.title_new_warranty_path'), new_warranty_path

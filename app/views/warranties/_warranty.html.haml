@@ -3,8 +3,8 @@
   .caption
     %h5= warranty.name
     %dl
-      %dt Expires on:
-      %dd= warranty.expires_on
+      %dt= "#{Warranty.human_attribute_name("expires_on")}:"
+      %dd= l(warranty.expires_on, :format => :default)
     %p
-      = link_to "Edit", edit_warranty_path(warranty), :class => 'btn'
-      = link_to "Destroy", warranty, :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-danger'
+      = link_to t('text.action_edit'), edit_warranty_path(warranty), :class => 'btn'
+      = link_to t('text.action_destroy'), warranty, :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-danger'

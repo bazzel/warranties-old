@@ -1,8 +1,15 @@
 nl:
   text:
     action_cancel: Annuleren
-    warranties_path: Garantiebewijzen
-    destroy_user_session_path: Afmelden
+    action_destroy: "Verwijderen"
+    action_edit: "Bewerken"
+    title_warranties_path: Garantiebewijzen
+    title_new_warranty_path: "Garantiebewijs toevoegen"
+    title_destroy_user_session_path: Afmelden
+    action_bar_back: Terug
+    action_bar_edit: Bewerken
+    action_bar_view_warranty: Toon garantiebewijs
+    action_bar_destroy: Verwijderen
     logged_in_as_foo:
       html: Ingelogd als %{current_user}
   flash:
@@ -11,12 +18,15 @@ nl:
     warranty_destroyed: Garantiebewijs is verwijderd
   activerecord:
     models:
-     warranty: Garantiebewijs
+     warranty:
+      one: Garantiebewijs
+      other: Garantiebewijzen
     attributes:
       warranty:
         name: Naam
         expires_on: Vervaldatum
         warranty: Bonnetje
+        photo: Foto
   application:
     side:
       new_warranty: Garantiebewijs toevoegen
@@ -57,7 +67,7 @@ nl:
     - vrijdag
     - zaterdag
     formats:
-      default: ! '%d/%m/%Y'
+      default: ! '%d-%m-%Y'
       long: ! '%e %B %Y'
       short: ! '%e %b'
     month_names:

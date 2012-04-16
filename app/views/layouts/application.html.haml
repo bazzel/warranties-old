@@ -21,10 +21,10 @@
       = link_to "Warranties", root_path, :class => "brand"
       %nav
         %ul
-          %li.active= link_to t('text.warranties_path'), warranties_path
+          %li.active= link_to t('text.title_warranties_path'), warranties_path
       %nav.nav.pull-right
         %li.divider-vertical
-        %li= link_to t('text.destroy_user_session_path'), destroy_user_session_path, :method => :delete
+        %li= link_to t('text.title_destroy_user_session_path'), destroy_user_session_path, :method => :delete
       %p.navbar-text.pull-right
         = t('text.logged_in_as_foo.html', :current_user => link_to(current_user.email, edit_user_registration_path))
 

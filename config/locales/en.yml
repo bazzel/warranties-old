@@ -34,8 +34,9 @@ en:
     #   <a href="#"><%= t("text.action_edit") %></a> or
     #   <a href="#"><%= t("text.action_cancel") %></a>
     #
-    # action_edit: "edit"
     action_cancel: "Cancel"
+    action_destroy: "Destroy"
+    action_edit: "Edit"
 
     # Button keys are prefixed with `action_`.
     #
@@ -69,8 +70,15 @@ en:
 #     #
 #     title_users_path: "View user list"
 #     title_new_user_path: "Create a new user"
-    warranties_path: "Warranties"
-    destroy_user_session_path: "Sign out"
+    title_warranties_path: "Warranties"
+    title_new_warranty_path: "Add Warranty"
+    title_destroy_user_session_path: "Sign out"
+
+    action_bar_back: Back
+    action_bar_edit: Edit
+    action_bar_view_warranty: View Warranty
+    action_bar_destroy: Destroy
+
 #
 #     # Short messages are prefixed with `message_`.
 #     #
@@ -164,12 +172,15 @@ en:
 
   activerecord:
     models:
-     warranty: Warranty
+     warranty:
+      one: Warranty
+      other: Warranties
     attributes:
       warranty:
         name: Name
         expires_on: Expires on
         warranty: Warranty
+        photo: Photo
   application:
     side:
       new_warranty: Add Warranty
