@@ -145,7 +145,9 @@ Then /^I should see a larger version popping up$/ do
 end
 
 When /^I cancel the (?:creation|update)$/ do
-  click_link "Cancel"
+  within('.action-bar') do
+    click_link 'Back'
+  end
 end
 
 When /^I crop the photo of the warranty's product$/ do

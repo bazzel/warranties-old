@@ -12,5 +12,3 @@ Feature: Viewing a warranty
     And I go to the warranty's detail page
     And I click on the image for the warranty
     Then I should see a larger version popping up
-
-
