@@ -12,6 +12,7 @@ Given /^a user with email "([^"]*)" has the following warranties:$/ do |email, t
 
   table.map_headers! {|header| header.downcase.to_sym }
   table.map_column!('warranty') {|warranty| File.open(File.join(Rails.root, 'spec', 'fixtures', warranty)) }
+  table.map_column!('photo', false) {|photo| File.open(File.join(Rails.root, 'spec', 'fixtures', photo)) }
 
   table.hashes.each do |hash|
     @user.warranties << FactoryGirl.create(:warranty, hash)
@@ -19,7 +20,7 @@ Given /^a user with email "([^"]*)" has the following warranties:$/ do |email, t
 end
 
 When /^I click on the image of the first warranty$/ do
-  @warranty = Warranty.first
+  @warranty = @current_user.warranties.first
   within("#warranty_#{@warranty.id}") do
     filename = @warranty.photo_url(:thumb)
     basename = File.basename(filename, File.extname(filename))
@@ -29,7 +30,7 @@ When /^I click on the image of the first warranty$/ do
 end
 
 Given /^I click on the Edit button of the first warranty$/ do
-  @warranty = Warranty.first
+  @warranty = @current_user.warranties.first
   within("#warranty_#{@warranty.id}") do
     step %{I click on the Edit button}
   end
@@ -105,8 +106,9 @@ Given /^I upload an invalid file$/ do
 end
 
 Given /^I submit the form$/ do
-  click_button "Create"
-  @warranty = @current_user.warranties.last
+  # click_button "Create"
+  find('input[name="commit"]').click
+  @warranty ||= @current_user.warranties.last
 end
 
 Then /^I should see a listing of my warranties$/ do
@@ -127,11 +129,9 @@ end
 Then /^I should see the warranty's detail page$/ do
   @warranty.reload
   current_path.should == warranty_path(@warranty)
-  # within_flash do
-  #   page.should have_content("New warranty created.")
-  # end
   page.should have_content(@warranty.name)
-  page.should have_selector("img[src='#{@warranty.warranty_url(:thumb)}']")
+  # page.should have_selector("img[src='#{@warranty.warranty_url(:thumb)}']")
+  page.should have_link("View Warranty", :href => @warranty.warranty_url(:large))
 
   if @warranty.photo?
     page.should have_selector("img[src='#{@warranty.photo_url(:thumb)}']")
@@ -161,5 +161,17 @@ end
 Then /^I should see that the file type is invalid$/ do
   within('form') do
     page.should have_content('You are not allowed to upload "xyz" files, allowed types: ["jpg", "jpeg", "gif", "png"]')
+  end
+end
+
+Then /^I cannot remove the photo$/ do
+  within('form') do
+    page.should have_no_selector("input[id='warranty_remove_photo']")
+  end
+end
+
+Then /^I can remove the photo$/ do
+  within('form') do
+    page.should have_selector("input[id='warranty_remove_photo']")
   end
 end

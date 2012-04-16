@@ -122,7 +122,7 @@ describe WarrantiesController do
       end
 
       describe "with photo" do
-        it "render 'crop'" do
+        it "renders 'crop'" do
           do_post({ :photo => 'double' })
           response.should render_template(:crop)
         end
@@ -143,11 +143,11 @@ describe WarrantiesController do
 
   describe "PUT update" do
     before(:each) do
-      @warranty.stub(:update_attributes).with({ 'these' => 'params' }).and_return(true)
+      @warranty.stub(:update_attributes).with(hash_including({ 'these' => 'params' })).and_return(true)
     end
 
-    def do_put
-      put :update, :id => '42', :warranty => {'these' => 'params'}
+    def do_put(options = {})
+      put :update, :id => '42', :warranty => {'these' => 'params'}.merge(options)
     end
 
     it "assigns the requested warranty as @warranty" do
@@ -162,14 +162,24 @@ describe WarrantiesController do
     end
 
     describe "success" do
-      it "redirects to warranty_path" do
-        do_put
-        response.should redirect_to(warranty_path(@warranty))
+      describe "without photo" do
+        it "redirects to warranty_path" do
+          do_put
+          response.should redirect_to(warranty_path(@warranty))
+        end
+
+        it "flashes notification" do
+          do_put
+          flash[:notice].should == I18n.t('flash.warranty_updated')
+        end
       end
 
-      it "flashes notification" do
-        do_put
-        flash[:notice].should == I18n.t('flash.warranty_updated')
+      describe "with photo" do
+        it "renders 'crop'" do
+          do_put({ :photo => 'double' })
+          response.should render_template(:crop)
+        end
+
       end
     end
 

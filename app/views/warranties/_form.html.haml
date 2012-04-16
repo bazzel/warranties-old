@@ -4,6 +4,8 @@
   = f.input :expires_on, :as => :string, :input_html => { :class => 'datepicker' }
   = f.input :warranty
   = f.input :photo
+  - if !warranty.new_record? && warranty.photo?
+    = f.input :remove_photo, :as => :boolean
 
   .form-actions
     = f.submit :class => 'btn-primary'

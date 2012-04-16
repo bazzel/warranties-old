@@ -30,7 +30,11 @@ class WarrantiesController < ApplicationController
 
   def update
     if @warranty.update_attributes(params[:warranty])
-      redirect_to(warranty_path(@warranty), :notice => t('flash.warranty_updated'))
+      if params[:warranty][:photo]
+        render :crop
+      else
+        redirect_to(warranty_path(@warranty), :notice => t('flash.warranty_updated'))
+      end
     else
       render :edit
     end

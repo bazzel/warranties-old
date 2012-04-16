@@ -2,7 +2,11 @@
   %h1= @warranty.name
 
 %p= image_tag(@warranty.photo_url(:thumb)) if @warranty.photo?
-%p=link_to(image_tag(@warranty.warranty_url(:thumb)), @warranty.warranty_url(:large), :class => 'fancybox', :id => "warranty_warranty_#{@warranty.id}")
+%p
+  -# =link_to(image_tag(@warranty.warranty_url(:thumb)), @warranty.warranty_url(:large), :class => 'fancybox', :id => "warranty_warranty_#{@warranty.id}")
+  =link_to(@warranty.warranty_url(:large), :class => 'fancybox btn btn-small', :id => "warranty_warranty_#{@warranty.id}") do
+    %i.icon-zoom-in
+    View Warranty
 %p
   %strong Expires on:
   = @warranty.expires_on
