@@ -16,10 +16,11 @@ class Warranty < ActiveRecord::Base
     if value.present?
       brand = user.brands.find_or_initialize_by_name(value)
       brand.user = user
-      self.brand = brand
     else
-      self.brand = nil
+      brand = nil
     end
+
+    self.brand = brand
   end
 
 
