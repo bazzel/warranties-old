@@ -1,2 +1,2 @@
 = render 'action_bar', :warranty => @warranty
-= render 'form', :warranty => @warranty
+= render 'form', :warranty => @warranty, :brand_names => current_user.brands.map(&:name)

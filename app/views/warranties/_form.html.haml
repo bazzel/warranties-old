@@ -6,7 +6,7 @@
   = f.input :photo
   - if !warranty.new_record? && warranty.photo?
     = f.input :remove_photo, :as => :boolean
-  = f.input :brand_name
+  = f.input :brand_name, :input_html => { :autocomplete => 'off', :data => { :provide => 'typeahead', :source => brand_names} }
 
   .form-actions
     = f.submit :class => 'btn-primary'
