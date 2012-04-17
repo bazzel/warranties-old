@@ -27,6 +27,7 @@ nl:
         expires_on: Vervaldatum
         warranty: Bonnetje
         photo: Foto
+        brand_name: Merk
   application:
     side:
       new_warranty: Garantiebewijs toevoegen
