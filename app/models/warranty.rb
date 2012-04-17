@@ -7,6 +7,21 @@ class Warranty < ActiveRecord::Base
 
   validates :name, :warranty, :expires_on, :presence => true
 
+  belongs_to :brand
+  belongs_to :user
+
+  delegate :name, :to => :brand, :prefix => true, :allow_nil => true
+
+  def brand_name=(value)
+    if value.present?
+      brand = user.brands.find_or_initialize_by_name(value)
+      brand.user = user
+      self.brand = brand
+    else
+      self.brand = nil
+    end
+  end
+
 
   private
     def crop_photo

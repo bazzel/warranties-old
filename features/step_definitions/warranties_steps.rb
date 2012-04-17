@@ -15,6 +15,7 @@ Given /^a user with email "([^"]*)" has the following warranties:$/ do |email, t
   table.map_column!('photo', false) {|photo| File.open(File.join(Rails.root, 'spec', 'fixtures', photo)) }
 
   table.hashes.each do |hash|
+    hash[:user] = @current_user
     @user.warranties << FactoryGirl.create(:warranty, hash)
   end
 end
@@ -55,6 +56,8 @@ Then /^I have (\d+) warranties left$/ do |count|
   @current_user.warranties.count.should == count.to_i
 end
 
+# Form steps
+#
 Given /^I enter valid data on the warranty's form$/ do
   within('form') do
     fill_in "Name", :with => "Lamp"
@@ -91,7 +94,6 @@ Given /^I update the warranty with invalid data$/ do
   end
 end
 
-
 Given /^I upload a photo of the warranty's product$/ do
   within('form') do
     attach_file "Photo", File.join(Rails.root, 'spec', 'fixtures', 'photo.gif')
@@ -110,6 +112,12 @@ Given /^I submit the form$/ do
   find('input[name="commit"]').click
   @warranty ||= @current_user.warranties.last
 end
+
+Given /^I type "([^"]*)" into the "([^"]*)" input$/ do |value, name|
+  fill_in name, :with => value
+end
+#
+# End form steps
 
 Then /^I should see a listing of my warranties$/ do
   @current_user.warranties.each do |warranty|
@@ -138,6 +146,11 @@ Then /^I should see the warranty's detail page$/ do
   else
     page.should_not have_selector("img[src='#{@warranty.photo_url(:thumb)}']")
   end
+end
+
+Then /^I should see "([^"]*)" on the warranty's detail page$/ do |content|
+  current_path.should == warranty_path(@warranty)
+  page.should have_content(content)
 end
 
 Then /^I should see a larger version popping up$/ do

@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120416113558) do
+ActiveRecord::Schema.define(:version => 20120417075750) do
+
+  create_table "brands", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+  end
+
+  add_index "brands", ["user_id"], :name => "index_brands_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -40,6 +49,9 @@ ActiveRecord::Schema.define(:version => 20120416113558) do
     t.date     "expires_on"
     t.integer  "user_id"
     t.string   "photo"
+    t.integer  "brand_id"
   end
+
+  add_index "warranties", ["brand_id"], :name => "index_warranties_on_brand_id"
 
 end

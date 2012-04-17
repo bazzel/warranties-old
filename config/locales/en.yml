@@ -181,6 +181,7 @@ en:
         expires_on: Expires on
         warranty: Warranty
         photo: Photo
+        brand_name: Brand
   application:
     side:
       new_warranty: Add Warranty
