@@ -131,6 +131,16 @@ describe Warranty do
           subject.save
         }.should_not change(Brand, :count)
       end
+
+      it "does not change brand when not provided" do
+        subject.brand_name = "Whatever"
+        subject.save
+
+        subject.name = 'Whenever'
+        lambda {
+          subject.save
+        }.should_not change(subject, :brand)
+      end
     end
   end
 end
