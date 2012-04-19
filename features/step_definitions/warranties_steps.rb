@@ -190,3 +190,7 @@ Then /^I can remove the photo$/ do
     page.should have_selector("input[id='warranty_remove_photo']")
   end
 end
+
+Then /^all my warranties were deleted as well$/ do
+  Warranty.count.should == 0
+end

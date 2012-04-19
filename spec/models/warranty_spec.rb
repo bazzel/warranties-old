@@ -55,6 +55,19 @@ describe Warranty do
           subject.save
         }.should_not change(Brand, :count)
       end
+
+      describe "when created for a particular user" do
+        # When using collection.create this should not raise an exception, so test explicitly.
+        it "still works" do
+          current_user = FactoryGirl.create(:user)
+          params = FactoryGirl.attributes_for(:warranty, :user => nil)
+          params[:brand_name] = "Foo bar"
+          lambda {
+            @warranty = current_user.warranties.create(params)
+          }.should_not raise_error
+        end
+
+      end
     end
 
     describe "existing brand" do

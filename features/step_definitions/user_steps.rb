@@ -28,6 +28,11 @@ When /^I change my language to "([^"]*)"$/ do |language|
   click_button "Update User"
 end
 
+When /^I delete my account$/ do
+  step %{I edit my profile}
+  click_link "Cancel my account"
+end
+
 # == Then
 Then /^I should see my profile page$/ do
   current_path.should == edit_user_registration_path
