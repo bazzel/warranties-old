@@ -158,7 +158,7 @@ Then /^I should see a larger version popping up$/ do
 end
 
 When /^I cancel the (?:creation|update)$/ do
-  within('.action-bar') do
+  within('#action-bar') do
     click_link 'Back'
   end
 end
