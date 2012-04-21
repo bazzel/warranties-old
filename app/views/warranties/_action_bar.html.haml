@@ -1,22 +1,20 @@
-%nav#action-bar.navbar
-  .navbar-inner
-    .container
-      %ul.nav
-        %li
-          = link_to warranties_path do
-            = t('text.action_bar_back')
-        - if action_name == 'show'
-          %li
-            = link_to edit_warranty_path(warranty) do
-              %i.icon-edit.icon-white
-              = t('text.action_bar_edit')
+= tb_navbar(:nav, :id => 'action-bar') do
+  %ul.nav
+    %li
+      = link_to warranties_path do
+        = t('text.action_bar_back')
+    - if action_name == 'show'
+      %li
+        = link_to edit_warranty_path(warranty) do
+          %i.icon-edit.icon-white
+          = t('text.action_bar_edit')
 
-        - unless warranty.new_record?
-          %li
-            =link_to(warranty.warranty_url(:large), :class => 'fancybox', :id => "warranty_warranty_#{warranty.id}") do
-              %i.icon-zoom-in.icon-white
-              = t('text.action_bar_view_warranty')
-          %li
-            = link_to warranty, :method => :delete, :confirm => "Are you sure?" do
-              %i.icon-remove.icon-white
-              = t('text.action_bar_destroy')
+    - unless warranty.new_record?
+      %li
+        =link_to(warranty.warranty_url(:large), :class => 'fancybox', :id => "warranty_warranty_#{warranty.id}") do
+          %i.icon-zoom-in.icon-white
+          = t('text.action_bar_view_warranty')
+      %li
+        = link_to warranty, :method => :delete, :confirm => "Are you sure?" do
+          %i.icon-remove.icon-white
+          = t('text.action_bar_destroy')
