@@ -1,7 +1,7 @@
 %li[warranty]
   = link_to(image_tag(warranty.photo_url(:thumb)), warranty)
   .caption
-    %h5= warranty.name
+    %h5= highlight(warranty.name, @search.search_attributes["name_contains"])
     %dl
       %dt= "#{Warranty.human_attribute_name("expires_on")}:"
       %dd= l(warranty.expires_on, :format => :default)

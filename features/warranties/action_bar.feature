@@ -7,6 +7,19 @@ Feature: Action bar
     Given I am logged in as a user with email "john@example.com" and password "secret"
 
   Scenario: Action bar while viewing a warranty
+    And I have the following warranties:
+     | name                  | warranty                        |
+     | Vacuum cleaner        | vacuum-cleaner.jpeg             |
+    And I go to the warranties page
+    Then I see the following items in the action bar:
+     | name          | visible |
+     | Back          | false   |
+     | Edit          | false   |
+     | View Warranty | false   |
+     | Destroy       | false   |
+     | Search        | true    |
+
+  Scenario: Action bar while viewing a warranty
     And I have the following warranty:
      | name                  | warranty                        |
      | Vacuum cleaner        | vacuum-cleaner.jpeg             |
@@ -17,6 +30,7 @@ Feature: Action bar
      | Edit          | true    |
      | View Warranty | true    |
      | Destroy       | true    |
+     | Search        | false   |
 
   Scenario: Action bar while adding a warranty
     Given I am on the new warranty page
@@ -26,6 +40,7 @@ Feature: Action bar
      | Edit          | false   |
      | View Warranty | false   |
      | Destroy       | false   |
+     | Search        | false   |
 
   Scenario: Action bar while editing a warranty
     Given I have the following warranty:
@@ -39,3 +54,4 @@ Feature: Action bar
      | Edit          | false   |
      | View Warranty | true    |
      | Destroy       | true    |
+     | Search        | false   |

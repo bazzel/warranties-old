@@ -56,6 +56,12 @@ Then /^I have (\d+) warranties left$/ do |count|
   @current_user.warranties.count.should == count.to_i
 end
 
+When /^I search for "([^"]*)"$/ do |name|
+  @search_value = name
+  fill_in("search_name_contains", :with => @search_value)
+  visit(warranties_path(:search => { :name_contains => @search_value }))
+end
+
 # Form steps
 #
 Given /^I enter valid data on the warranty's form$/ do
@@ -124,6 +130,20 @@ Then /^I should see a listing of my warranties$/ do
     page.should have_selector("li#warranty_#{warranty.id}")
     page.should have_content warranty.name
     page.should have_selector("img[src='#{warranty.photo_url(:thumb)}']")
+  end
+end
+
+Then /^I should see the following warranties in the search results:$/ do |table|
+  table.map_column!('visible') { |v| v == "true" }
+  within('.warranties') do
+    table.hashes.each do |hash|
+      if hash["visible"]
+        page.should have_content(hash["name"])
+        page.should have_css('.highlight', :text => @search_value)
+      else
+        page.should_not have_content(hash["name"])
+      end
+    end
   end
 end
 

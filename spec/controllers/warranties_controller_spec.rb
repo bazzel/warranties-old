@@ -18,17 +18,25 @@ describe WarrantiesController do
 
   describe "GET index" do
     before(:each) do
-      @warranties.stub(:all).and_return(@warranties)
+      @search = double
+      @warranties.stub(:search).and_return(@search)
+      @search.stub(:all).and_return(@warranties)
     end
 
-    def do_get
-      get :index
+    def do_get(options = {})
+      get :index, options
     end
 
     it "assigns @warranties" do
-      @current_user.warranties.should_receive(:all).and_return(@warranties)
+      @search.should_receive(:all).and_return(@warranties)
+      @current_user.warranties.should_receive(:search).and_return(@search)
       do_get
       assigns(:warranties).should == @warranties
+    end
+
+    it "searches for given param" do
+      @current_user.warranties.should_receive(:search).with('these' => 'params').and_return(@search)
+      do_get :search => { :these => 'params' }
     end
 
     it "renders 'index'" do

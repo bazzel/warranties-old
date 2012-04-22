@@ -2,7 +2,8 @@ class WarrantiesController < ApplicationController
   before_filter :find_warranty, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @warranties = current_user.warranties.all
+    @search = current_user.warranties.search(params[:search])
+    @warranties = @search.all
   end
 
   def new
