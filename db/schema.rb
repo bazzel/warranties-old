@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120417075750) do
+ActiveRecord::Schema.define(:version => 20120425175722) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -43,13 +43,14 @@ ActiveRecord::Schema.define(:version => 20120417075750) do
 
   create_table "warranties", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "warranty"
     t.date     "expires_on"
     t.integer  "user_id"
     t.string   "photo"
     t.integer  "brand_id"
+    t.date     "purchased_on"
   end
 
   add_index "warranties", ["brand_id"], :name => "index_warranties_on_brand_id"

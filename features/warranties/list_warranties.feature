@@ -37,3 +37,12 @@ Feature: List warranties
     When I go to the warranties page
     And I delete the first warranty
     Then I have 2 warranties left
+
+  Scenario: Viewing several attributes
+    Given I am logged in as a user with email "john@example.com" and password "secret"
+    And I have the following warranties:
+     | name           | warranty            | purchased_on |
+     | Vacuum cleaner | vacuum-cleaner.jpeg | 2004-12-31   |
+    When I go to the warranties page
+    Then I should see "Purchased on"
+    And I should see "2004-12-31"

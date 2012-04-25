@@ -28,6 +28,7 @@ nl:
         warranty: Bonnetje
         photo: Foto
         brand_name: Merk
+        purchased_on: Aanschafdatum
   application:
     side:
       new_warranty: Garantiebewijs toevoegen

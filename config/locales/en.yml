@@ -178,10 +178,11 @@ en:
     attributes:
       warranty:
         name: Name
-        expires_on: Expires on
+        expires_on: "Expires on"
         warranty: Warranty
         photo: Photo
         brand_name: Brand
+        purchased_on: "Purchased on"
   application:
     side:
       new_warranty: Add Warranty
