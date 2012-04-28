@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120425175722) do
+ActiveRecord::Schema.define(:version => 20120425183351) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20120425175722) do
     t.string   "photo"
     t.integer  "brand_id"
     t.date     "purchased_on"
+    t.text     "notes"
   end
 
   add_index "warranties", ["brand_id"], :name => "index_warranties_on_brand_id"

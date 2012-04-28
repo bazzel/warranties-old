@@ -16,3 +16,7 @@
   %p
     %strong= "#{Warranty.human_attribute_name("purchased_on")}:"
     = l(@warranty.purchased_on, :format => :default)
+- if @warranty.notes
+  %p
+    %strong= "#{Warranty.human_attribute_name("notes")}:"
+    = sanitize(simple_format(@warranty.notes))

@@ -41,8 +41,9 @@ Feature: List warranties
   Scenario: Viewing several attributes
     Given I am logged in as a user with email "john@example.com" and password "secret"
     And I have the following warranties:
-     | name           | warranty            | purchased_on |
-     | Vacuum cleaner | vacuum-cleaner.jpeg | 2004-12-31   |
+     | name           | warranty            | purchased_on | notes       |
+     | Vacuum cleaner | vacuum-cleaner.jpeg | 2004-12-31   | Lorem ipsum |
     When I go to the warranties page
     Then I should see "Purchased on"
     And I should see "2004-12-31"
+    And I should see a "Notes" popover for "Lorem ipsum"

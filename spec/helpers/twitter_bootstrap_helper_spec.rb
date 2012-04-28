@@ -26,4 +26,36 @@ describe TwitterBootstrapHelper do
       tb_navbar.should have_selector('nav', :class => 'navbar', :id => 'action-bar')
     end
   end
+
+  describe "tb_popover" do
+    it "returns an element formatted for Twitter Bootstrap hover popup" do
+      tb_popover = helper.tb_popover("Content")
+      tb_popover.should have_css("div[rel='popover']")
+    end
+
+    it "transforms into HTML" do
+      tb_popover = helper.tb_popover("Foo\nBar\n\nBaz")
+      tb_popover.should have_css("[data-content='<p>Foo\n<br />Bar</p>\n\n<p>Baz</p>']")
+    end
+
+    it "contains an optional title" do
+      tb_popover = helper.tb_popover("Content", :title => "Title")
+      tb_popover.should have_css("div[title='Title']")
+    end
+
+    it "uses given tag for element" do
+      tb_popover = helper.tb_popover("Content", :tag => :strong, :title => "Title")
+      tb_popover.should have_css("strong[title='Title']")
+    end
+
+    it "uses given classname for element" do
+      tb_popover = helper.tb_popover("Content", :class => 'icon-info-sign', :title => "Title")
+      tb_popover.should have_css("div.icon-info-sign[title='Title']")
+    end
+
+    it "truncates" do
+      tb_popover = helper.tb_popover("x"*10000)
+      tb_popover.should have_css("[data-content='<p>#{"x"*797}...</p>']")
+    end
+  end
 end

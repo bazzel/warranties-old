@@ -1,7 +1,10 @@
 %li[warranty]
   = link_to(image_tag(warranty.photo_url(:thumb)), warranty)
   .caption
-    %h5= highlight(warranty.name, @search.search_attributes["name_contains"])
+    %h5
+      = highlight(warranty.name, @search.search_attributes["name_contains"])
+      - if warranty.notes
+        = tb_popover(warranty.notes, :tag => :i, :title => Warranty.human_attribute_name("notes"), :class => 'icon-info-sign')
     %dl
       %dt= "#{Warranty.human_attribute_name("expires_on")}:"
       %dd= l(warranty.expires_on, :format => :default)

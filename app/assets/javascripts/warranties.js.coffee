@@ -6,6 +6,8 @@ $ ->
     format: "yyyy-mm-dd"
     autoclose: true
 
+  $("[rel='popover']").popover()
+
 $ ->
   new FancyBox()
 
