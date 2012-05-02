@@ -183,6 +183,7 @@ en:
         photo: Photo
         brand_name: Brand
         purchased_on: "Purchased on"
+        notes: Notes
   application:
     side:
       new_warranty: Add Warranty
