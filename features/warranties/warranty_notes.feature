@@ -12,4 +12,3 @@ Feature: Adding note to a warranty
     And I should see a "Notes" popover for "Lorem ipsum"
 
   Scenario: Loooooong note will be collapsed
-  Scenario: Search on note

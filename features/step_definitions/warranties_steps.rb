@@ -58,8 +58,8 @@ end
 
 When /^I search for "([^"]*)"$/ do |name|
   @search_value = name
-  fill_in("search_name_contains", :with => @search_value)
-  visit(warranties_path(:search => { :name_contains => @search_value }))
+  fill_in("search_name_or_notes_contains", :with => @search_value)
+  visit(warranties_path(:search => { :name_or_notes_contains => @search_value }))
 end
 
 # Form steps

@@ -2,7 +2,7 @@ Then /^I see the following items in the action bar:$/ do |table|
   table.map_column!('visible') { |v| v == "true" }
   table.map_column!('name') do |name|
     case name
-    when "Search" then "search_name_contains"
+    when "Search" then "search_name_or_notes_contains"
     else               name
     end
   end
