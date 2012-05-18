@@ -1,5 +1,5 @@
 # RVM bootstrap
-set :rvm_ruby_string, '1.9.2-p136@warranties'
+set :rvm_ruby_string, '1.9.2-p320@warranties'
 $:.unshift(File.expand_path('./lib', ENV['rvm_path'])) # Add RVM's lib directory to the load path.
 require "rvm/capistrano"                               # Load RVM's capistrano plugin.
 
@@ -14,9 +14,9 @@ require 'bundler/capistrano'
 
 # main details
 set :application, "warranties"
-role :web, "patrick.kabisa.nl"
-role :app, "patrick.kabisa.nl"
-role :db,  "patrick.kabisa.nl", :primary => true
+role :web, "176.58.103.100"
+role :app, "176.58.103.100"
+role :db,  "176.58.103.100", :primary => true
 
 # server details
 default_run_options[:pty] = true
