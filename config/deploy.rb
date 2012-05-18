@@ -7,7 +7,7 @@ require "rvm/capistrano"                               # Load RVM's capistrano p
 # set :whenever_command, "bundle exec whenever"
 # require 'whenever/capistrano'
 
-set :rvm_type, :user
+set :rvm_type, :system
 
 # bundler bootstrap
 require 'bundler/capistrano'
